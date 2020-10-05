@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class="container">
+     <div class="btx-item js-item-space btx-space" style="height:60px;"></div>
+                                                
+                                            <div class="btx-item js-item-product btx-product btx-product--onhover btx-center-align btx-product-layout--grid woocommerce btx-product-no-rating btx-product-no-label">
+
+                                            <div class="row">
+
+                                            {% for art in article %}
+                                            
+                                            <div class="col-md-3" style="padding:8px;">
+                                                    <div class="card card__course">
+                                                            <div >
+                                                                <a class="card-header__title  justify-content-center align-self-center d-flex flex-column" href="sticker/{{art.id}}">
+                                                                    <span><img src="{{art.image.url}}" class="mb-0" style="width:280px; height:150px;" alt="logo"></span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="p-3">
+                                                                <div class="mb-2">
+                                                                
+                                                                    
+                                                                    <strong class="text-muted"><b>{{art.title}}</b></strong>
+                                                                </div>
+                                                                <div class="d-flex align-items-center">
+                                                                    <strong class="h4 m-0">⋔{{art.qiymet}}</strong>
+                                                                    <!-- Bura Button veya bawqi yazi qoya bilersen burda bax adinda button varidi -->
+                                                                </div>
+                                                            </div><small><b>{{art.created_date}}</b></small>
+                                                        </div>
+                                                    </div>
+                                            
+                                            {% endfor %}
+                                            
+                                </div>
+                                            </div></div>
+                                        </div><br><br><br><br><br><br><br>
+
+
+
+{% endblock body %}

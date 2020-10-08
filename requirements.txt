@@ -1,0 +1,5 @@
+Django==3.0.7
+django-ckeditor==6.0.0
+django-cleanup==5.1.0
+django-js-asset==1.2.2
+django-multiupload==0.5.2

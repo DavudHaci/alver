@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+.mine{
+    padding-left:50px;
+    padding-right:50px;
+}
+
+</style>
+
+<br><br>
+<hr><br>
+<div class="container mine">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <h5><b><a href="/user/register"><i>Yeni Hesab</i></a></b></h5><br>
+    <button type="submit" class="btnx" style="border-radius:2px; border-width:1px;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giris </font></font></button>
+</form>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock body %}

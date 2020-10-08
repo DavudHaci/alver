@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+        <main class="btx-content btx-content--with-header" id="main">
+        
+            <article id="post-1449" class="btx-content-wrapper post-1449 page type-page status-publish has-post-thumbnail hentry">
+                
+                <header class="btx-content-header js-dynamic-navbar btx-page-hero btx-page-hero--stacked btx-page-hero--fit-height squeeze-hero" data-role="header">
+                    <div class="btx-background" data-type="image" data-parallaxspeed="2" data-contentfade="" data-mobileparallax="">
+                        <div class="btx-background-wrapper">
+                            <div class="btx-background-inner" style="background-image:url({% static 'upload/onlineshopping.png' %}); background-size:cover; background-position:center top; background-repeat:repeat;"></div>
+                        </div>
+                    </div>
+                    <div class="btx-page-hero-inner btx-container">
+                        <div class="btx-page-hero-wrapper btx-center-align">
+                            <div class="btx-page-hero-content btx-middle-vertical" style="padding-top:30px; padding-bottom:30px;">
+                                <div class="btx-page-hero-content-wrapper btx-center-align" style="max-width:733px;">
+
+                                    <div class="btx-page-hero-body">
+
+                                        <div class="btx-page-hero-body-title">
+                                            <h1 class="btx-page-hero-title btx-s-text-color btx-custom_a-font" style="letter-spacing:2px;"><span class="font-style font-style-big" style="font-size: 110px;">Welcome To AlVer.az !!</span></h1>
+                                        </div>
+
+                                        <div class="btx-page-hero-subtitle btx-page-hero-subtitle--bottom btx-custom_c-font"><span style="color: rgb(48, 48, 48);">Azerbaycanin En Boyuk Shopping Online Magazasi</span>
+                                            <br>
+                                        </div>
+
+                                        <div class="btx-page-hero-divider">
+                                            <div class="btx-page-hero-divider-inner btx-s-text-bg" style="max-width:360px;"></div>
+                                        </div>
+                                        {% if request.user.is_authenticated %}
+                                        {%else%}
+                                        <div class="btx-page-hero-buttons">
+
+                                            <div class="btx-button btx-button--fill btx-button-hover--none btx-button-size--medium btx-button-color--basic"><a class="btnx" href="user/register" target="_blank" style="border-radius:0px;">Qeydiyatdan Kec</a></div>
+                                            <div class="btx-button btx-button--border btx-button-hover--none btx-button-size--medium btx-button-color--basic"><a class="btnx" href="user/login" target="_blank" style="border-radius:0px;">Daxil Ol</a></div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="btx-main btx-main--single">
+                    <div class="btx-main-wrapper">
+                        <section class="btx-section js-dynamic-navbar btx-p-border-border" data-index="0">
+                            <div class="btx-background" data-type="image" data-parallaxspeed="2" data-contentfade="" data-mobileparallax="">
+                                <div class="btx-background-overlay btx-p-bg-bg" style="background-color:#f5f5f5; opacity:1;"></div>
+                            </div>
+                            <div class="btx-section-wrapper" style="padding-top:120px; padding-bottom:120px;">
+                                <div class="btx-container">
+                                
+                                    <div class="btx-row btx-row--main">
+                                    
+                                        <div class="btx-col-12">
+                                            
+                                            <div class="btx-item js-item-heading btx-heading btx-heading--plain btx-center-align btx-uppercase">
+                                                <h4 class="btx-heading-text btx-custom_a-font btx-s-text-color btx-s-text-border" style="letter-spacing:2px;"><span style="color: rgb(170, 170, 170);">JUST LANDED</span><br></h4>
+                                            </div>
+
+                                            <div class="btx-item js-item-heading btx-heading btx-heading--breakline btx-center-align">
+                                                <h3 class="btx-heading-text btx-secondary-font btx-s-text-color btx-s-text-border" style="padding-bottom:30px; letter-spacing:-0.01em;"><span class="font-style" style="font-size: 28px;">Latest From The Collection</span></h3>
+                                            </div>
+
+                                            <div class="btx-item js-item-space btx-space" style="height:60px;"></div>
+                                                
+                                            <div class="btx-item js-item-product btx-product btx-product--onhover btx-center-align btx-product-layout--grid woocommerce btx-product-no-rating btx-product-no-label">
+
+                                            <div class="row">
+
+                                            {% for art in article %}
+                                            
+                                            <div class="col-md-3" style="padding:8px;">
+                                                    <div class="card card__course">
+                                                            <div >
+                                                                <a class="card-header__title  justify-content-center align-self-center d-flex flex-column" href="sticker/{{art.id}}">
+                                                                    <span><img src="{{art.image.url}}" class="mb-0" style="width:280px; height:150px;" alt="logo"></span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="p-3">
+                                                                <div class="mb-2">
+                                                                
+                                                                    
+                                                                    <strong class="text-muted"><b>{{art.title}}</b></strong>
+                                                                </div>
+                                                                <div class="d-flex align-items-center">
+                                                                    <strong class="h4 m-0">⋔{{art.qiymet}}</strong>
+                                                                    <!-- Bura Button veya bawqi yazi qoya bilersen burda bax adinda button varidi -->
+                                                                </div>
+                                                            </div><small><b>{{art.created_date}}</b></small>
+                                                        </div>
+                                                    </div>
+                                            
+                                            {% endfor %}
+                                            
+                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="btx-section js-dynamic-navbar btx-p-border-border btx-dark-scheme" data-index="5" data-scheme="dark">
+                            <div class="btx-background" data-type="image" data-parallaxspeed="2" data-contentfade="" data-mobileparallax="">
+                                <div class="btx-background-wrapper">
+                                    <div class="btx-background-inner" style="background-image:url({% static 'upload/bg-black.jpg' %}); background-size:cover; background-position:center center; background-repeat:repeat;"></div>
+                                </div>
+                                <div class="btx-background-overlay btx-p-bg-bg" style="opacity:0.95;"></div>
+                            </div>
+                            <div class="btx-section-wrapper" style="padding-top:160px; padding-bottom:160px;">
+                                <div class="btx-container">
+                                    <div class="btx-row btx-row--main">
+                                        <div class="btx-col-2">
+                                        </div>
+                                        <div class="btx-col-8">
+
+                                            <div class="btx-item js-item-box btx-box btx-center-align anmt-item anmt-zoomout btx-p-border-border btx-light-scheme">
+                                                <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                                    <div class="btx-background-overlay " style="background-color:#ffffff; opacity:1;"></div>
+                                                </div>
+                                                <div class="btx-box-inner" data-height="">
+                                                    <div class="btx-box-content btx-middle-vertical" style="overflow-y:hidden;">
+                                                        <div class="btx-box-body" style="padding-top:15px; padding-right:15px; padding-left:15px; padding-bottom:15px;">
+
+                                                            <div class="btx-item js-item-action btx-action btx-action--stacked btx-center-align btx-s-bg-bg btx-p-border-border" style="padding-right:10%; padding-left:10%; border-width:1px; background-color:transparent;">
+
+                                                                <div class="btx-action-body">
+                                                                    <div class="btx-action-title btx-s-text-color btx-custom_a-font"><span class="font-style" style="font-size: 48px;">Take The Inside Track</span></div>
+
+                                                                    <div class="btx-action-subtitle"><span class="font-style" style="font-size: 15px;">Sed ornare ultrices odio, sed tempor risus placerat et. Nulla pretium nisl sit amet libero sollicitudin molestie in vitae mauris. Nulla odio elit, finibus.<br></span></div>
+                                                                </div>
+                                                                <div class="btx-action-button">
+                                                                    <div class="btx-button btx-button--border btx-button-hover--inverse btx-button-size--large btx-button-color--basic"><a class="btnx" href="#" style="border-radius:0px;">Join Our Newsletter</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btx-col-2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                    </div>
+                </div>
+
+            </article>
+        </main>
+    </div>
+
+{% endblock body %}
+        

@@ -58,8 +58,22 @@ def dynamic(request,id):
 
 
 def create(request):
+    keyword = request.GET.get("s")
 
-    return render(request,"check.html")
+    if  keyword:
+
+        
+        articles = models.Article.objects.filter(title__contains=keyword)
+
+        #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
+
+        return render(request,"searchIndex.html",{"article":articles[::-1]})
+
+
+    articles = models.Article.objects.all()
+    
+
+    return render(request,"check.html",{"article":articles[::-1]})
 
 @login_required(login_url="/user/login")
 def deleteArticle(request,id):

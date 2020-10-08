@@ -1,1 +1,0 @@
-web: gunicorn isaBlog.wsgi

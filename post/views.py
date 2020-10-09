@@ -12,17 +12,51 @@ def index(request):
     if  keyword:
 
         
-        articles = models.Article.objects.filter(title__contains=keyword)
+        articles = models.Article.objects.filter(title__contains=keyword)[::-1]
+        if articles==False:
+            return render(request,"searchIndex.html")
+        if len(articles)>4:
+            palasa = len(articles)//4 + 1
+            print(palasa)
+            x = 0
+            
+            son=[]
+            for i in range(palasa):
+                son+=[articles[x:x+4]]
+                x+=4
 
-        #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
+                        #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
+            return render(request,"searchIndex.html",{
+            "son":son
+            })
 
-        return render(request,"searchIndex.html",{"article":articles[::-1]})
+        else:
+            
 
 
-    articles = models.Article.objects.all()
+            return render(request,"searchIndex.html",{
+            "son":[articles]
+            })
+
+
+
+    articles = models.Article.objects.all()[::-1] # [:10] Butun Articllar Sonuncu 10 dene
+    
+    palasa = len(articles)//4 + 1
+    print(palasa)
+    x = 0
+    
+    son=[]
+    for i in range(palasa):
+        son+=[articles[x:x+4]]
+        x+=4
+
     
 
-    return render(request,"index.html",{"article":articles[::-1]})
+
+    return render(request,"index.html",{
+    "son":son
+    })
 
 
 
@@ -64,16 +98,42 @@ def create(request):
 
         
         articles = models.Article.objects.filter(title__contains=keyword)
+        palasa = len(articles)//4 + 1
+        print(palasa)
+        x = 0
+        
+        son=[]
+        for i in range(palasa):
+            son+=[articles[x:x+4]]
+            x+=4
 
-        #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
-
-        return render(request,"searchIndex.html",{"article":articles[::-1]})
+                    #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
 
 
-    articles = models.Article.objects.all()
+
+        return render(request,"searchIndex.html",{
+        "son":son[::-1]
+        })
+
+
+
+    articles = models.Article.objects.all() # Butun Articllar Sonuncu 10 dene
+    articles = articles[::-1]
+    palasa = len(articles)//4 + 1
+    print(palasa)
+    x = 0
+    
+    son=[]
+    for i in range(palasa):
+        son+=[articles[x:x+4]]
+        x+=4
+
     
 
-    return render(request,"check.html",{"article":articles[::-1]})
+
+    return render(request,"check.html",{
+    "son":son
+    })
 
 @login_required(login_url="/user/login")
 def deleteArticle(request,id):

@@ -115,6 +115,7 @@
                                     <li class="btx-menu-search"><a href="#" class="js-menu-search"><i class="fa fa-search"></i></a>
                                         <div class="btx-navbar-search btx-p-bg-bg btx-s-text-color"><span class="btx-close-button fa fa-ln-cross"></span>
                                             <form class="btx-search-form" role="search" method="get" action="/"><span class="btx-search-form-title fa fa-search"></span>
+                                             {% csrf_token %}
                                                 <input type="text" placeholder="Axtar" value="" name="s" />
                                             </form>
                                         </div>

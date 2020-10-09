@@ -91,6 +91,14 @@ def LoginUser(request):
 
 @login_required(login_url="/user/login")
 def dashboard(request):
+    keyword=request.GET.get("elan")
+    print(keyword)
+    if keyword:
+        articles = Article.objects.filter(author=request.user,title__contains=keyword)[::-1]
+        
+        return render(request,'dashboard.html',{"articles":articles})
+
+
 
     articles = Article.objects.filter(author=request.user)
     print(articles,"ARTICLEESS")

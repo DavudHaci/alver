@@ -1,5 +1,5 @@
- <div class="mdk-drawer  js-mdk-drawer" id="default-drawer" data-align="">
-        <div class="mdk-drawer__content">
+ <div class="mdk-drawer  js-mdk-drawer" style="z-index:5;" id="default-drawer" data-align="">
+        <div class="mdk-drawer__content" style="z-index:50;">
             <div class="sidebar sidebar-dark sidebar-left bg-dark-gray" data-perfect-scrollbar>
 
                 <div class="d-flex align-items-center sidebar-p-a sidebar-account flex-shrink-0">
@@ -29,13 +29,14 @@
                 <div class="sidebar-heading">Student</div>
                 <div class="sidebar-block p-0">
                     <ul class="sidebar-menu mt-0">
-                        <li class="sidebar-menu-item">
+                        
+                        <li class="sidebar-menu-item {% if vip == "salam"%}active{% endif %}">
                             <a class="sidebar-menu-button" href="/user/vip">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">star_half</i>
                                 <span class="sidebar-menu-text"><b>VIP</b></span>
                             </a>
                         </li>
-                        <li class="sidebar-menu-item active">
+                        <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="/user/dashboard">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">queue_play_next</i>
                                 <span class="sidebar-menu-text">Elanlar</span>
@@ -178,7 +179,7 @@
 
     <div class="mdk-drawer js-mdk-drawer" id="events-drawer" data-align="end">
         <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-light sidebar-left" data-perfect-scrollbar>
+            <div class="sidebar sidebar-light sidebar-left"  data-perfect-scrollbar>
 
 
 

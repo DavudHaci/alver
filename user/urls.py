@@ -13,4 +13,6 @@ urlpatterns = [       #Funkisya Adi Backend
     path('logout/', views.UserLogout,name="logout"),
     path('dashboard/', views.dashboard,name="dashboard"),
     path('sticker/', views.sticker,name="sticker"),
+    path('vip/', views.vip,name="vip"),
+
 ]

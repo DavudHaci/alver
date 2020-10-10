@@ -13,11 +13,27 @@ STATUS_CHOICES = [
     ('da', 'Dasinmaz Emlak'),
     ('hvn', 'Heyvanlar'), # Categoriyalarin hamisini Bir bir yaz ! amk
     ('tlf','Telefonlar')
-    
+]
 
+USER_PACKETS = [
 
+    ('nrml','Normal'),
+    ('vip','VIP'),
+    ('dmnd','DIAMOND'),
+    ('pre','PREMIUM'),
 
 ]
+
+ARTICLE_PACKETS=[
+    ('nrml','Normal'),
+    ('vip','VIP'),
+    ('dmnd','DIAMOND'),
+    ('pre','PREMIUM'),
+]
+
+
+
+
 
 
 class Article(models.Model):
@@ -56,3 +72,17 @@ class ArticleCategory(models.Model):
     def __str__(self):
         return self.category
     
+
+
+
+class PacketsUsers(models.Model):
+    user = models.ForeignKey("auth.User",on_delete=models.CASCADE,verbose_name="Isdifadeci")
+    packet = models.CharField(choices=USER_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
+    
+    def  __str__(self):
+        return self.user.username
+    
+class PacketsArticle(models.Model):
+    elan = models.ForeignKey("Article",on_delete=models.CASCADE,verbose_name="Elan")
+    packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
+

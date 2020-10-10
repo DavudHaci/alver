@@ -117,6 +117,18 @@ def dashboard(request):
 
 
 
+@login_required(login_url='/user/login')
+def vip(request):
+
+
+    content={
+        "vip":'salam'
+    }
+
+    return render(request,"vip.html",content)
+
+
+
 
 
 @login_required(login_url="/user/login")

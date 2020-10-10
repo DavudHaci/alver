@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 #from django.shortcuts import HttpResponseRedirect
-from post.models import Article,ArticleImage,ArticleCategory
+from post.models import Article,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 
@@ -31,6 +31,12 @@ def register(request):
                 newUser = User(first_name=first_name,last_name=last_name,username=username,email=email)
                 newUser.set_password(password)
                 newUser.save()
+
+                Packet= PacketsUsers()
+                Packet.user=newUser
+                Packet.packet='nrml'
+                Packet.save() 
+                
 
                 messages.success(request, 'Qeydiyatdan Ugurla Kecdiniz !')
 
@@ -151,8 +157,12 @@ def sticker(request):
 
 
             #Sticker.product = Article.objects.get(id=Sticker.id)
- 
+    
             Sticker.save()
+            Packet = PacketsArticle()
+            Packet.elan=Sticker
+            Packet.packet='nrml'
+            Packet.save()
             ac  = ArticleCategory()
 
             ac.product = Sticker

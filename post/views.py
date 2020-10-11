@@ -38,20 +38,35 @@ def index(request):
             "son":[articles]
             })
 
-
-
     articles = models.Article.objects.all()[::-1] # [:10] Butun Articllar Sonuncu 10 dene
+
+    elanlar = models.Elan.objects.all()[::-1]
+
+    allinone = [articles,elanlar]
+    one =[]
+    for i in allinone:
+        for j in i:
+            one+=[j]
+
+    def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
+        return word.created_date # burdada biz created_date e gore sortlasdiracaqimizi bildiririik.
+
+    one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
     
-    palasa = len(articles)//4 + 1
+            
+
+    
+    palasa = len(one)//4 + 1
     print(palasa)
     x = 0
     
     son=[]
     for i in range(palasa):
-        son+=[articles[x:x+4]]
+        son+=[one[x:x+4]]
         x+=4
 
     
+    print(son)
 
 
     return render(request,"index.html",{
@@ -85,7 +100,7 @@ def dynamic(request,id):
         print(article.title,article.content,"VARYOXXXXXXX")
 
         content = {
-            "article":article
+            "article":articlenow
         }
 
         return render(request,"product.html",content)

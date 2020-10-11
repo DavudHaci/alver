@@ -1,7 +1,7 @@
 from django import forms
 
 from django.core.exceptions import ValidationError
-from post.models import Article
+from post.models import Article,Elan
 from multiupload.fields import MultiFileField
 
 
@@ -63,3 +63,9 @@ class StickerForm(forms.ModelForm):
         model = Article
         fields = ['title','content','nomre','status','qiymet']
 
+
+class ElanForm(forms.ModelForm):
+    
+    class Meta:
+        model = Elan
+        fields = ['user','title','content','nomre','status','qiymet']

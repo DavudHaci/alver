@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,PacketsArticle
+from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage
 
 # Register your models here.
 class ImageInlines(admin.TabularInline):
@@ -8,6 +8,11 @@ class ImageInlines(admin.TabularInline):
     min_num =0
     max_num = 15
  
+class ElanInlines(admin.TabularInline):
+    model = ElanImage
+    extra = 2
+    min_num =0
+    max_num = 15
 
 @admin.register(ArticleCategory)
 class CategoryArticle(admin.ModelAdmin):
@@ -53,3 +58,20 @@ class AdminArticlePacket(admin.ModelAdmin):
     class Meta:
         model = PacketsArticle
 
+
+
+@admin.register(Elan)
+class AdminElan(admin.ModelAdmin):
+    list_display=['user','title','qiymet']
+    search_fields=['title','user','qiymet']
+    inlines=[ElanInlines]
+    class Meta:
+        model = Elan
+
+
+
+@admin.register(ElanImage)
+class AdminElanImages(admin.ModelAdmin):
+
+    class Meta:
+        model = ElanImage

@@ -1,11 +1,11 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from . import forms
 from django.contrib.auth.models import User
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 #from django.shortcuts import HttpResponseRedirect
-from post.models import Article,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers
+from post.models import Article,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers,Elan,ElanImage
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 
@@ -203,3 +203,96 @@ def sticker(request):
     
         
     return render(request,"sticker.html",content)
+
+
+def elan(request):
+    if request.method == "POST":
+        form = forms.ElanForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            Sticker = form.save(commit=False)
+            imgHead = request.FILES.get("image")
+            ctgry = request.POST.get("status")
+            Sticker.status = ctgry
+
+            fs = FileSystemStorage()
+            file_path=fs.save(imgHead.name,imgHead)
+
+            Sticker.image = file_path 
+
+
+
+            #Sticker.product = Article.objects.get(id=Sticker.id)
+    
+            Sticker.save()
+
+            """ 
+            Packet = PacketsArticle()
+            Packet.elan=Sticker
+            Packet.packet='nrml'    #Burdaki Olanlar Elan ucunde yaratmaq lazimdi
+            Packet.save()
+            
+            
+            ac  = ArticleCategory()
+
+            ac.product = Sticker
+            ac.category= ctgry
+            ac.save()
+            """
+
+
+            try:
+                files = request.FILES.getlist("file[]")
+                for img in files:
+                    print (img)
+                    newfs=FileSystemStorage()
+                    newPath= newfs.save(img.name,img)
+
+
+
+                    newImage = ElanImage(product=Sticker,product_image=newPath)
+                    newImage.save()
+                    
+                link = "/sticker/"+str(Sticker.id)
+                return redirect('/')
+
+
+
+            except:
+
+
+
+                link = "/sticker/"+str(Sticker.id)
+                return redirect('/')
+    
+    
+    else:
+
+        form=forms.ElanForm()
+
+        
+
+        return render(request,"Elan.html",{"form":form})
+
+
+def elanDinamik(request,id):
+
+    articlenow = get_object_or_404(Elan,id=id)
+
+    try:
+        articleImages=ElanImage.objects.filter(product = articlenow)
+        print(articleImages,'\n',articleImages[0].product_image.url,"BUUUUU ARTICCCLEEE IMAGEESSSDIR")
+        content = {
+            'article':articlenow,
+            'articleImages':articleImages,
+        }
+
+        return render(request,"product.html",content)
+    except:
+
+
+        content = {
+            "article":articlenow,
+        }
+
+        return render(request,"product.html",content)

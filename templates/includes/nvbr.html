@@ -22,8 +22,11 @@
                                 </div>
 
                         {%else%}
-                                <div class=" btx-button-hover--brand btx-button-size--small  btx-navbar-widget"><a class="btnx js-header-link-btn" href="{% url 'user:login' %}">Daxil Ol</a></div>
-
+                                <div class=" btx-button-hover--brand btx-button-size--small  btx-navbar-widget">
+                                    <a class="btnx btn-outline-light" style="padding:10px;" href="{% url 'user:elan' %}">Elan Yerləşdir +</a>
+                                    <a class="btnx btn-outline-light" style="padding:10px;" href="{% url 'user:login' %}">Daxil Ol</a>
+                                </div>
+                                
                         {% endif %}
 
 
@@ -251,6 +254,7 @@
                                     <li class="menu-item menu-item-has-children  menu-item-mega-menu"><a href="{% url 'user:dashboard' %}">Kontrol Paneli</a>
                                     {%else%}
                                     <li class="menu-item menu-item-has-children  menu-item-mega-menu"><a href="{% url 'user:login' %}">Daxil Ol</a>
+                                    <li class="menu-item menu-item-has-children  menu-item-mega-menu"><a href="{% url 'user:elan' %}">Elan Yeləşdir +</a>                                    
                                     <li class="menu-item menu-item-has-children  menu-item-mega-menu"><a href="{% url 'user:register' %}">Qeydiyatdan Kec</a>
 
                                     {% endif %}

@@ -35,6 +35,24 @@ ARTICLE_PACKETS=[
 
 
 
+class Elan(models.Model):
+    user = models.CharField(max_length=50,verbose_name="İsdifadəçi Adı")
+    title = models.CharField(max_length=50,verbose_name="Başlıq Yazısı ")
+    content = RichTextField(verbose_name="Mehsul Haqqında")
+    created_date = models.DateTimeField(auto_now_add=True,verbose_name="Yaradilma Tarixi")
+    status = models.CharField(max_length=3,choices=STATUS_CHOICES,verbose_name='category',default=None)
+    nomre = models.IntegerField(verbose_name="Telefon Nömrəsi")
+    image = models.ImageField(blank=True,verbose_name="Səkil Əlavə Et")
+    qiymet = models.IntegerField(verbose_name="Qiymət")
+    
+
+    
+    def __str__(self):
+        return self.title
+
+
+
+
 
 class Article(models.Model):
     author = models.ForeignKey("auth.User",on_delete=models.CASCADE,verbose_name="Isdifadeci")
@@ -56,6 +74,14 @@ class Article(models.Model):
 
 class ArticleImage(models.Model):
     product = models.ForeignKey('Article',on_delete=models.CASCADE) 
+    product_image = models.ImageField(blank=True,upload_to="images/")
+
+    def __str__(self):
+        return self.product.title + "Image"
+
+
+class ElanImage(models.Model):
+    product = models.ForeignKey('Elan',on_delete=models.CASCADE) 
     product_image = models.ImageField(blank=True,upload_to="images/")
 
     def __str__(self):

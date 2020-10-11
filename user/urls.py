@@ -14,5 +14,9 @@ urlpatterns = [       #Funkisya Adi Backend
     path('dashboard/', views.dashboard,name="dashboard"),
     path('sticker/', views.sticker,name="sticker"),
     path('vip/', views.vip,name="vip"),
+    path('elan/', views.elan,name="elan"),
+    path('elan/<int:id>', views.elanDinamik,name="elanDinamik"),
+
+
 
 ]

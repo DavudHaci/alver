@@ -252,18 +252,22 @@ def elan(request):
 
                     newImage = ElanImage(product=Sticker,product_image=newPath)
                     newImage.save()
-                    
-                link = "/sticker/"+str(Sticker.id)
-                return redirect('/')
+           
+                messages.success(request, 'Elanınız Uğurla yerləsdirildi')
+                link = "/user/elan/"+str(Sticker.id)
+                return redirect(link)
 
 
 
             except:
 
 
+                messages.success(request, 'Elanınız Uğurla yerləsdirildi')
+                link = "/user/elan/"+str(Sticker.id)
+                return redirect(link)
 
-                link = "/sticker/"+str(Sticker.id)
-                return redirect('/')
+        messages.warning(request, '"Məhsul Haqqında" Bölməsini doldurmalısınız')
+        return redirect('/user/elan')
     
     
     else:

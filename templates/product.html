@@ -126,7 +126,7 @@
 
                                         <div class="sku_wrapper">
                                             <div class="btx-product-meta-label"><b>Adi</b></div>
-                                            <span class="sku" itemprop="sku"><strong><b>{{article.author.first_name}}</b></strong></span>
+                                            <span class="sku" itemprop="sku"><strong><b>{% if article.user %}{{article.user}} {% else %}{{article.author.first_name}}{% endif %}</b></strong></span>
                                         </div>
 
                                         <!-- Make Change here -->

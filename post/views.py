@@ -40,7 +40,7 @@ def index(request):
 
     articles = models.Article.objects.all()[::-1] # [:10] Butun Articllar Sonuncu 10 dene
 
-    elanlar = models.Elan.objects.all()[::-1]
+    elanlar = models.Elan.objects.all()[::-1] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
 
     allinone = [articles,elanlar]
     one =[]
@@ -49,7 +49,7 @@ def index(request):
             one+=[j]
 
     def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
-        return word.created_date # burdada biz created_date e gore sortlasdiracaqimizi bildiririik.
+        return word.created_date # burdada biz created_date(yeni meselcun one[0].create_date kimi) e gore sortlasdiracaqimizi bildiririik.
 
     one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
     

@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,get_object_or_404,redirect
+from django.shortcuts import render,HttpResponse,get_object_or_404,redirect,reverse
 from . import models
 from user import forms
 from django.core.files.storage import FileSystemStorage
@@ -208,8 +208,7 @@ def updateArticle(request,id):
                     newImage = models.ArticleImage(product=Sticker,product_image=newPath)
                     newImage.save()
                     
-                link = "/sticker/"+str(Sticker.id)
-                return redirect(link)
+                return redirect(reverse('dynamic',kwargs={"id":Sticker.id}))
 
 
 
@@ -217,8 +216,7 @@ def updateArticle(request,id):
 
 
 
-                link = "/sticker/"+str(Sticker.id)
-                return redirect(link)
+                return redirect(reverse('dynamic',kwargs={"id":Sticker.id}))
 
 
     article = get_object_or_404(models.Article,id=id)

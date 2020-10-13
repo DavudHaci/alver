@@ -1,11 +1,11 @@
-from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,reverse
 from . import forms
 from django.contrib.auth.models import User
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 #from django.shortcuts import HttpResponseRedirect
-from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers,Elan,ElanImage
+from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketElan,PacketsArticle,PacketsUsers,Elan,ElanImage
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 
@@ -182,8 +182,7 @@ def sticker(request):
                     newImage = ArticleImage(product=Sticker,product_image=newPath)
                     newImage.save()
                     
-                link = "/sticker/"+str(Sticker.id)
-                return redirect(link)
+                return redirect(reverse('dynamic',kwargs={"id":Sticker.id})) # burda dynamic esas url faylinda oldugu ucun qabaqina isaBlog yazilmir cunki main di ozu birinci ora baxir
 
 
 
@@ -191,8 +190,7 @@ def sticker(request):
 
 
 
-                link = "/sticker/"+str(Sticker.id)
-                return redirect(link)
+                return redirect(reverse('dynamic',kwargs={"id":Sticker.id}))
       
 
 
@@ -226,12 +224,12 @@ def elan(request):
     
             Sticker.save()
 
-            """ 
-            Packet = PacketsArticle()
+            
+            Packet = PacketElan()
             Packet.elan=Sticker
             Packet.packet='nrml'    #Burdaki Olanlar Elan ucunde yaratmaq lazimdi
             Packet.save()
-            """
+            
             
             ac  = ElanCategory()
 
@@ -254,8 +252,7 @@ def elan(request):
                     newImage.save()
            
                 messages.success(request, 'Elanınız Uğurla yerləsdirildi')
-                link = "/user/elan/"+str(Sticker.id)
-                return redirect(link)
+                return redirect(reverse('user:elanDinamik',kwargs={"id":Sticker.id}))
 
 
 
@@ -263,9 +260,8 @@ def elan(request):
 
 
                 messages.success(request, 'Elanınız Uğurla yerləsdirildi')
-                link = "/user/elan/"+str(Sticker.id)
-                return redirect(link)
-
+                return redirect(reverse('user:elanDinamik',kwargs={"id":Sticker.id}))  
+                #burda reverse user in icerisindeki urls baxir ve adi elanDinamik olan urlni cagiriri ve yaninada id ni yerlesdirir
         messages.warning(request, '"Məhsul Haqqında" Bölməsini doldurmalısınız')
         return redirect('/user/elan')
     

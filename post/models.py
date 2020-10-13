@@ -151,3 +151,9 @@ class PacketsArticle(models.Model):
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     def  __str__(self):
         return self.elan.title
+
+class PacketElan(models.Model):
+    elan = models.ForeignKey("Elan",on_delete=models.CASCADE,verbose_name="Elan")
+    packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
+    def  __str__(self):
+        return self.elan.title

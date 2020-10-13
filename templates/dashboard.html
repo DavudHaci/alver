@@ -314,7 +314,7 @@
             </div>
 
             <div class="container page__container">
-                <form action="/user/dashboard" class="mb-3 border-bottom pb-3" method="get">
+                <form action="{% url 'user:dashboard' %}" class="mb-3 border-bottom pb-3" method="get">
                         {% csrf_token %}
                        <div class="search-form mr-3 search-form--light">
                             <input type="text" class="form-control" name="elan" placeholder="Elan Axtar" id="searchSample02">

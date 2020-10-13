@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage,ElanCategory
+from .models import Article,ArticleImage,PacketElan,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage,ElanCategory
 
 # Register your models here.
 class ImageInlines(admin.TabularInline):
@@ -64,6 +64,15 @@ class AdminArticlePacket(admin.ModelAdmin):
 
     class Meta:
         model = PacketsArticle
+
+@admin.register(PacketElan)
+class AdminPacketElan(admin.ModelAdmin):
+
+    search_fields=["packet",'elan']
+    list_display=['elan','packet']
+
+    class Meta:
+        model = PacketElan
 
 
 

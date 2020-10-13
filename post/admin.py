@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage
+from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage,ElanCategory
 
 # Register your models here.
 class ImageInlines(admin.TabularInline):
@@ -22,6 +22,13 @@ class CategoryArticle(admin.ModelAdmin):
     class Meta:
         model = ArticleCategory
 
+@admin.register(ElanCategory)
+class CategoryArticle(admin.ModelAdmin):
+    list_filter=["product","category"]
+    list_display=["product","category"]
+
+    class Meta:
+        model = ElanCategory
 
 
 

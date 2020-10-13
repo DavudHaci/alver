@@ -225,3 +225,46 @@ def updateArticle(request,id):
     form = forms.StickerForm(instance=article)
         
     return render(request,"updateArticle.html",{"form":form})
+
+
+
+def Category(request,ctgry,nov):
+    print(ctgry,nov)
+
+
+
+
+    articles = models.Article.objects.filter(status=nov)[::-1] # [:10] Butun Articllar Sonuncu 10 dene
+
+    elanlar = models.Elan.objects.filter(status=nov)[::-1]
+
+    allinone = [articles,elanlar]
+    one =[]
+    for i in allinone:
+        for j in i:
+            one+=[j]
+
+    def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
+        return word.created_date # burdada biz created_date e gore sortlasdiracaqimizi bildiririik.
+
+    one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
+    
+            
+
+    
+    palasa = len(one)//4 + 1
+    print(palasa)
+    x = 0
+    
+    son=[]
+    for i in range(palasa):
+        son+=[one[x:x+4]]
+        x+=4
+
+    
+    print(son)
+
+
+    return render(request,"katiqoriya.html",{
+    "son":son
+    })

@@ -61,11 +61,11 @@ class StickerForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ['title','content','nomre','status','qiymet']
+        fields = ['title','content','nomre','qiymet']
 
 
 class ElanForm(forms.ModelForm):
     
     class Meta:
         model = Elan
-        fields = ['user','title','content','nomre','status','qiymet']
+        fields = ['user','title','content','nomre','qiymet']

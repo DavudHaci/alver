@@ -6,13 +6,44 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 STATUS_CHOICES = [
-    ('e', 'Elektronika'),
-    ('evb', 'Ev Ve Bag'),
-    ('se', 'Sexsi Esyalar'),
-    ('n', 'Neqliyat'),
-    ('da', 'Dasinmaz Emlak'),
-    ('hvn', 'Heyvanlar'), # Categoriyalarin hamisini Bir bir yaz ! amk
-    ('tlf','Telefonlar')
+    ('mnz', 'Mənzillər'),
+    ('ovo', 'Obyektlər və ofislər'),
+    ('trp', 'Torpaq'),
+    ('qrj', 'Qarajlar'),
+    ('vvb', 'Villalar, bağ evləri'),
+    ('mvi', 'Mebel və interyer'), # Categoriyalarin hamisini Bir bir yaz ! amk
+    ('tvt','Temir Ve Tikinti'),
+    ('btk','Bitkiler'),
+    ('mt','Məişət texnikası'),
+    ('qab','Qab-qacaq və mətbəx ləvazimatları'),
+    ('ka','Komputer Aksesuarlari'),
+    ('nvn','Noutbuklar və Netbuklar'),
+    ('pc','Masaüstü kompüterlər'),
+    ('nvs','Nömrələr və SİM-kartlar'),
+    ('mnt','Komponentlər və monitorlar'),
+    ('ft','Foto texnika'),
+    ('vls','Velosipedlər'),
+    ('ma','Musiqi alətləri'),
+    ('iva','İdman və asudə'),
+    ('tlf','Telefonlar'),
+    ('pve','Planşet və elektron kitablar'),
+    ('oav','Ofis avadanlığı və istehlak'),
+    ('op','Oyunlar Pultlar ve programlar'),
+    ('ehv','Ehtiyat hissələri və aksesuarlar'),
+    ('afv','Avtobuslar və xüsusi texnika'),
+    ('avt','Avtomobillər'),
+    ('aqr','Aqrotexnika'),
+    ('mvm','Motoskiletler Ve Mopedler'),
+    ('sn','Su nəqliyyatı'),
+    ('itl','İtlər'),
+    ('huv','Hevanlar ücün Məhsullar'),
+    ('dh','Digər heyvanlar'),
+    ('psk','Pişiklər'),
+    ('qsl','Quşlar'),
+    ('avb','Akvarium və balıqlar'),
+    ('dgr','Digər'),
+
+   
 ]
 
 USER_PACKETS = [
@@ -93,6 +124,13 @@ class ElanImage(models.Model):
 
 class ArticleCategory(models.Model):
     product = models.ForeignKey('Article',on_delete=models.CASCADE)
+    category = models.CharField(max_length=50,choices=STATUS_CHOICES,verbose_name="Category")
+
+    def __str__(self):
+        return self.category
+
+class ElanCategory(models.Model):
+    product = models.ForeignKey('Elan',on_delete=models.CASCADE)
     category = models.CharField(max_length=50,choices=STATUS_CHOICES,verbose_name="Category")
 
     def __str__(self):

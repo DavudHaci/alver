@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 #from django.shortcuts import HttpResponseRedirect
-from post.models import Article,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers,Elan,ElanImage
+from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketsArticle,PacketsUsers,Elan,ElanImage
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 
@@ -231,14 +231,14 @@ def elan(request):
             Packet.elan=Sticker
             Packet.packet='nrml'    #Burdaki Olanlar Elan ucunde yaratmaq lazimdi
             Packet.save()
+            """
             
-            
-            ac  = ArticleCategory()
+            ac  = ElanCategory()
 
             ac.product = Sticker
             ac.category= ctgry
             ac.save()
-            """
+            
 
 
             try:

@@ -56,16 +56,16 @@
                                             <div class="btx-item js-item-product btx-product btx-product--standard btx-left-align btx-product-layout--carousel woocommerce btx-product-no-rating">
                                                 <!-- 1 Palasa Divlerler icinde 3 dene elan . Forun birini burda aciriq birinide aldaki divde-->
                                                 
-                                                <div class="btx-product-content" style="margin:0 -10px;" data-display="4" data-scroll="1" data-loop="true">
+                                                <div class="btx-product-content" style="margin:0 -10px;  padding:0px;" data-display="4" data-scroll="1" data-loop="true">
                                                     {% for art in article %}
                                                    
                                                     
-                                                    <article class="btx-entry  btx-col-3 post-1516 product type-product status-publish has-post-thumbnail product_cat-top product_tag-t-shirt first outofstock featured shipping-taxable purchasable product-type-simple" style="padding:0 10px;" data-filter="Top">
+                                                    <article class="btx-entry  btx-col-3 post-1516 product type-product status-publish has-post-thumbnail product_cat-top product_tag-t-shirt first outofstock featured shipping-taxable purchasable " style="padding:0 10px;" data-filter="Top">
                                                         <div class="btx-entry-inner card btx-product-entry-content btx-with-background" style="background-color:rgba(255,255,255,1);">
                                                             <div class="btx-product-entry-media btx-product-entry-media--still">
                                                                 <a class="btx-product-entry-image" {% if art.user %} href="/user/elan/{{art.id}}" {% else %}href="/sticker/{{art.id}}"{% endif %}>
 
-                                                                    <img width="624" height="800" src="{{art.image.url}}" class="attachment-shop_catalog size-shop_catalog wp-post-image" style="width:280px; height:150px;" alt="shop-blackshirt-01" title="shop-blackshirt-01" />
+                                                                    <img width="624" height="800" src="{{art.image.url}}" class="attachment-shop_catalog size-shop_catalog wp-post-image" style="max-height:180px; min-height:180px; max-width:360px; min-width:280; object-fit:cover" alt="shop-blackshirt-01" title="shop-blackshirt-01" />
                                                                 </a>
 
                                                             </div>
@@ -74,7 +74,7 @@
                                                                 <div class="mb-2">
                                                                 
                                                                     
-                                                                    <strong class="text-muted"><b>{{art.title |truncatechars:32}}</b></strong>
+                                                                    <strong class="text-muted"><b>{{art.title |truncatechars:25}}</b></strong>
                                                                 </div>
                                                                 <div class="d-flex align-items-center">
                                                                     <strong class="h4 m-0">⋔{{art.qiymet}}</strong>

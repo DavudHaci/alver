@@ -146,7 +146,7 @@ def create(request):
     
 
 
-    return render(request,"check.html",{
+    return render(request,"yoxla.html",{
     "son":son
     })
 

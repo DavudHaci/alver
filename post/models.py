@@ -75,6 +75,7 @@ class Elan(models.Model):
     nomre = models.IntegerField(verbose_name="Telefon Nömrəsi")
     image = models.ImageField(blank=True,verbose_name="Səkil Əlavə Et")
     qiymet = models.IntegerField(verbose_name="Qiymət")
+    packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     
 
     
@@ -94,7 +95,8 @@ class Article(models.Model):
     nomre = models.IntegerField(verbose_name="Telfon Nomresi")
     image = models.ImageField(blank=True,verbose_name="Sekil Elave Et")
     qiymet = models.IntegerField(verbose_name="Qiymet")
-    
+    packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
+
 
     
     def __str__(self):
@@ -139,13 +141,18 @@ class ElanCategory(models.Model):
 
 
 
+
+
 class PacketsUsers(models.Model):
     user = models.ForeignKey("auth.User",on_delete=models.CASCADE,verbose_name="Isdifadeci")
     packet = models.CharField(choices=USER_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     
     def  __str__(self):
         return self.user.username
-    
+
+        
+"""
+
 class PacketsArticle(models.Model):
     elan = models.ForeignKey("Article",on_delete=models.CASCADE,verbose_name="Elan")
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
@@ -157,3 +164,5 @@ class PacketElan(models.Model):
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     def  __str__(self):
         return self.elan.title
+
+"""

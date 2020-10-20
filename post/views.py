@@ -6,58 +6,24 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def index(request):
-    keyword = request.GET.get("s")
 
-    if  keyword:
-
-        
-        articles = models.Article.objects.filter(title__contains=keyword)[::-1]
-        if articles==False:
-            return render(request,"searchIndex.html")
-        if len(articles)>4:
-            palasa = len(articles)//4 + 1
-            print(palasa)
-            x = 0
-            
-            son=[]
-            for i in range(palasa):
-                son+=[articles[x:x+4]]
-                x+=4
-
-                        #articles = get_object_or_404(models.Article,title__contains=keyword) Bele de munkundur.
-            return render(request,"searchIndex.html",{
-            "son":son
-            })
-
-        else:
-            
-
-
-            return render(request,"searchIndex.html",{
-            "son":[articles]
-            })
-
-    articles = models.Article.objects.all()[::-1] # [:10] Butun Articllar Sonuncu 10 dene
-
-    elanlar = models.Elan.objects.all()[::-1] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
-
-    allinone = [articles,elanlar]
+def kole(ls):
+    allinone = ls
     one =[]
     for i in allinone:
         for j in i:
             one+=[j]
+        
+
 
     def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
         return word.created_date # burdada biz created_date(yeni meselcun one[0].create_date kimi) e gore sortlasdiracaqimizi bildiririik.
 
     one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
-    
             
 
     
     palasa = len(one)//4 + 1
-    print(palasa)
     x = 0
     
     son=[]
@@ -65,12 +31,61 @@ def index(request):
         son+=[one[x:x+4]]
         x+=4
 
+    return son
     
-    print(son)
+
+
+def index(request):
+    keyword = request.GET.get("s")
+
+    if  keyword:
+
+        
+        articles = models.Article.objects.filter(title__contains=keyword,packet='nrml')[::-1]
+        elanlar = models.Elan.objects.filter(title__contains=keyword,packet='nrml')[::-1]
+
+        Premiumarticles = models.Article.objects.filter(title__contains=keyword,packet='pre')[::-1]
+        Premiumelanlar = models.Elan.objects.filter(title__contains=keyword,packet='pre')[::-1]        
+ 
+        son = kole([articles,elanlar])
+        pre = kole([Premiumarticles,Premiumelanlar])
+
+        
+
+
+        return render(request,"searchIndex.html",{
+        "son":son,
+        "pre":pre,
+        })
+
+
+    """
+    userPremium = models.PacketsArticle.objects.filter(packet='pre')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+  
+    elanPremium = models.PacketElan.objects.filter(packet='pre')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+
+    userNormal = models.PacketsArticle.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+
+    userNormal = models.PacketsArticle.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+    """
+    
+    articles = models.Article.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+
+    elanlar = models.Elan.objects.filter(packet='nrml')[::-1][:12] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    
+    Premiumarticles = models.Article.objects.filter(packet='pre')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+
+    Premiumelanlar = models.Elan.objects.filter(packet='pre')[::-1][:12] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+
+    son = kole([articles,elanlar])
+    pre = kole([Premiumarticles,Premiumelanlar])
+
+    
 
 
     return render(request,"index.html",{
-    "son":son
+    "son":son,
+    "pre":pre,
     })
 
 

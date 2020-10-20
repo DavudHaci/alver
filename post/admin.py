@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article,ArticleImage,PacketElan,ArticleCategory,PacketsUsers,PacketsArticle,Elan,ElanImage,ElanCategory
+from .models import Article,ArticleImage,ArticleCategory,PacketsUsers,Elan,ElanImage,ElanCategory
 
 # Register your models here.
 class ImageInlines(admin.TabularInline):
@@ -35,7 +35,7 @@ class CategoryArticle(admin.ModelAdmin):
 @admin.register(Article)
 class AdminArticle(admin.ModelAdmin):
     list_filter=["created_date","qiymet"]
-    list_display=["title","author","created_date"]
+    list_display=["title","author","created_date","packet"]
     list_display_links=["title"]
     search_fields=["title",'content']
     inlines = [ImageInlines]
@@ -57,28 +57,10 @@ class AdminUserPacket(admin.ModelAdmin):
     class Meta:
         model = PacketsUsers
 
-@admin.register(PacketsArticle)
-class AdminArticlePacket(admin.ModelAdmin):
-    search_fields=["packet"]
-    list_display=['elan','packet']
-
-    class Meta:
-        model = PacketsArticle
-
-@admin.register(PacketElan)
-class AdminPacketElan(admin.ModelAdmin):
-
-    search_fields=["packet",'elan']
-    list_display=['elan','packet']
-
-    class Meta:
-        model = PacketElan
-
-
 
 @admin.register(Elan)
 class AdminElan(admin.ModelAdmin):
-    list_display=['user','title','qiymet']
+    list_display=['user','title','qiymet','packet']
     search_fields=['title','user','qiymet']
     inlines=[ElanInlines]
     class Meta:

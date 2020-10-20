@@ -1,53 +1,359 @@
-<html><head>
-                                <meta charset="utf-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1">
-                                <title>Snippet - BBBootstrap</title>
-                                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-                                <link href="" rel="stylesheet">
-                                <style>html,
-body {
-    background-color: #039BE5
-}
+{% extends 'layout.html' %}
+{% load static %}
 
-.items {
-    width: 90%;
-    margin: 0px auto;
-    margin-top: 100px
-}
+{% block body %}
 
-.slick-slide {
-    margin: 10px
-}
+    <body class="page page-id-3260 page-child parent-pageid-12 page-template-default btx-layout btx-layout--wide btx-layout-responsive btx-layout--topnav btx-layout--fixednav container-animated" data-scheme="light" data-layout="wide">
+    <div class="btx-page-load btx-p-bg-bg loaded">
+        <div class="btx-page-load-spinner">
+            <div class="btx-loading btx-loading--ring btx-p-border-border">
+                <div class="btx-ring"></div>
+            </div>
+        </div>
+    </div>
 
-.slick-slide img {
-    width: 100%;
-    border: 0px solid #fff
-}</style>
-                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-                                <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-                                <script type="text/javascript">$(document).ready(function(){
+    <div class="btx-wrapper btx-p-bg-bg btx-wrapper--header-transparent" id="fixed-background">
 
-$('.items').slick({
-infinite: true,
-slidesToShow: 3,
-slidesToScroll: 3
-});
-});</script>
-                            </head>
-                            <body oncontextmenu="return false" class="snippet-body">
-                             <!--Slick Carousel Slider-->
- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css">
- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
- <div class="items slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
-     <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 5593px; transform: translate3d(-2303px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg"></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190715/gallery/preview/03_r_car.jpg"></div><div class="slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-current slick-active" data-slick-index="6" aria-hidden="false" tabindex="0" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190720/gallery/preview/02_o_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190715/gallery/preview/03_r_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="10" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="11" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="12" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div><div class="slick-slide slick-cloned" data-slick-index="13" aria-hidden="true" tabindex="-1" style="width: 309px;"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1565190714/gallery/preview/04_g_car.jpg"></div></div></div>
-     
-     
-     
-     
-     
-     
- <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button></div>
-                            
-</body></html>
+        
+
+        <main class="btx-content btx-content--no-header" id="main">
+            <article id="post-3260" class="btx-content-wrapper post-3260 page type-page status-publish hentry">
+
+                <div class="btx-main btx-main--single">
+                    <div class="btx-main-wrapper">
+                        <section class="btx-section js-dynamic-navbar btx-p-border-border btx-dark-scheme btx-section--fit-height" id="temp-fixed" data-index="0" data-scheme="dark" style="height: auto; line-height: inherit;">
+                            <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                <div class="btx-background-wrapper">
+                                    <div class="btx-background-inner" style="background-image:url(upload/home-music-02.jpg); background-size:cover; background-position:center center; background-repeat:repeat;"></div>
+                                </div>
+                                <div class="btx-background-overlay btx-p-bg-bg" style="opacity:0.5;"></div>
+                            </div>
+                            <div class="btx-section-wrapper" style="padding-top:0px; padding-right:40px; padding-left:40px; padding-bottom:0px;">
+                                <div class="btx-container--fullwidth">
+                                    <div class="btx-row btx-row--main">
+                                        <div class="btx-col-12">
+
+                                            <div class="btx-item js-item-box btx-box btx-left-align btx-p-border-border">
+                                                <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                                    <div class="btx-background-overlay " style="opacity:0.9;"></div>
+                                                </div>
+                                                <div class="btx-box-inner" style="height:100vh; line-height:100vh;" data-height="100vh">
+                                                    <div class="btx-box-content btx-middle-vertical" style="max-width:550px; overflow:visible;">
+                                                        <div class="btx-box-body">
+
+                                                            <div class="btx-item js-item-heading btx-heading btx-heading--plain btx-left-align">
+                                                                <h1 class="btx-heading-text btx-custom_a-font btx-s-text-color btx-s-text-border"><span class="font-style font-style-big" style="font-size: 100px;">Live Life&nbsp;&amp; <br>play music</span></h1>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-text btx-text btx-left-align btx-primary-font line-height-16">
+                                                                <div class="btx-row" style="margin:0 -30px;">
+
+                                                                    <div class="btx-text-content btx-col-12" style="padding:0 30px;">
+                                                                        <div class="btx-text-content-inner">
+                                                                            <span class="font-style" style="font-size: 18px;"><span style="color: rgb(255, 255, 255);">Hi, this is Martin Anderson. I am a passion-driven DJ. I work as a graphic designer for a living, however I spend all my weekend spinning and creating some beats. Recently I have released my new EP on iTunes, so I would appreciate if you check them out.<br></span></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-space btx-space" style="height:10px;"></div>
+
+                                                            <div class="btx-item js-item-button btx-button btx-button--border btx-left-align btx-button-size--medium btx-button-hover--inverse btx-button-color--basic">
+                                                                <a href="#" class="btnx" style="border-radius:0px; border-width:1px;">
+
+                                                                    <i class="fa fa-apple btx-icon--before"></i> ITunes Download
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="btx-item js-item-box btx-box btx-left-align btx-p-border-border">
+                                                <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                                    <div class="btx-background-overlay " style="opacity:0.9;"></div>
+                                                </div>
+                                                <div class="btx-box-inner" style="height:100vh; line-height:100vh;" data-height="100vh">
+                                                    <div class="btx-box-content btx-middle-vertical" style="max-width:550px; overflow:visible;">
+                                                        <div class="btx-box-body">
+
+                                                            <div class="btx-item js-item-heading btx-heading btx-heading--breakline btx-left-align btx-uppercase" style="margin-bottom:40px;">
+                                                                <h2 class="btx-heading-text btx-custom_a-font btx-s-text-color btx-s-text-border"><span class="font-style font-style-big" style="font-size: 68px;">Recent Beats</span></h2>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-text btx-text btx-left-align btx-custom_a-font modal-embed">
+                                                                <div class="btx-row" style="margin:0 -30px;">
+
+                                                                    <div class="btx-text-content btx-col-12 anmt-item anmt-fadeinl" style="padding:0 30px;">
+                                                                        <div class="btx-text-content-inner">
+                                                                            <span class="font-style" style="font-size: 24px;"><ul class="btx-text-bullet" style="list-style:none; list-style-position:inside;"><li><span style="color: rgb(255, 255, 255);">Walking With Elephants</span>&nbsp; <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/140546638&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"><span class="btx-icon btx-icon--with-hover btx-icon--plain btx-icon--hover-fill btx-icon--small btx-icon--inline"><span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;"><i class="fa fa-music"></i></span><span class="btx-icon-hover btx-icon-fill btx-s-brand-bg btx-s-brand-contrast-color" style="background-color:#01a2dd; color:#fff;"><i class="fa fa-music"></i></span></span></a><a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/140546638&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true" "=""></a><a href="http://google.com/ "></a></li><li><span style="color: rgb(255, 255, 255); ">Chains And Shackles</span>&nbsp;&nbsp;<a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/174713395&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true "><span class="btx-icon btx-icon--with-hover btx-icon--plain btx-icon--hover-fill btx-icon--small btx-icon--inline "><span class="btx-icon-normal btx-icon-plain btx-p-brand-color " style="color:#ffffff; "><i class="fa fa-music "></i></span><span class="btx-icon-hover btx-icon-fill btx-s-brand-bg btx-s-brand-contrast-color " style="background-color:#01a2dd; color:#fff; "><i class="fa fa-music "></i></span></span></a><a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/174713395&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true "></a></li><li><span style="color: rgb(255, 255, 255); ">Blue Orphan </span>&nbsp;<a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203100010&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true "><span class="btx-icon btx-icon--with-hover btx-icon--plain btx-icon--hover-fill btx-icon--small btx-icon--inline "><span class="btx-icon-normal btx-icon-plain btx-p-brand-color " style="color:#ffffff; "><i class="fa fa-music "></i></span><span class="btx-icon-hover btx-icon-fill btx-s-brand-bg btx-s-brand-contrast-color " style="background-color:#01a2dd; color:#fff; "><i class="fa fa-music "></i></span></span></a><a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/203100010&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true "></a></li><li><span style="color: rgb(255, 255, 255); ">Nochnoy Dozor &nbsp;</span><a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/144640823&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true "><span class="btx-icon btx-icon--with-hover btx-icon--plain btx-icon--hover-fill btx-icon--small btx-icon--inline "><span class="btx-icon-normal btx-icon-plain btx-p-brand-color " style="color:#ffffff; "><i class="fa fa-music "></i></span><span class="btx-icon-hover btx-icon-fill btx-s-brand-bg btx-s-brand-contrast-color " style="background-color:#01a2dd; color:#fff; "><i class="fa fa-music "></i></span></span></a></li><li><span style="color: rgb(255, 255, 255); ">Gotham</span>&nbsp; <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/85006882&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true " "=""><span class="btx-icon btx-icon--with-hover btx-icon--plain btx-icon--hover-fill btx-icon--small btx-icon--inline"><span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;"><i class="fa fa-music"></i></span><span class="btx-icon-hover btx-icon-fill btx-s-brand-bg btx-s-brand-contrast-color" style="background-color:#01a2dd; color:#fff;"><i class="fa fa-music"></i></span></span>
+                                                                            </a>
+                                                                            <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/144640823&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></a>
+                                                                            <a href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/144640823&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></a>
+                                                                            </li>
+                                                                            </ul>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-space btx-space" style="height:10px;"></div>
+
+                                                            <div class="btx-item js-item-button btx-button btx-button--border btx-left-align btx-button-size--medium btx-button-hover--inverse btx-button-color--basic">
+                                                                <a href="#" class="btnx" style="border-radius:0px; border-width:1px;">
+
+                                                                    <i class="fa fa-soundcloud btx-icon--before"></i> Follow Me
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="btx-item js-item-box btx-box btx-left-align btx-p-border-border">
+                                                <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                                    <div class="btx-background-overlay " style="opacity:0.9;"></div>
+                                                </div>
+                                                <div class="btx-box-inner" style="height:100vh; line-height:100vh;" data-height="100vh">
+                                                    <div class="btx-box-content btx-middle-vertical" style="max-width:550px; overflow:visible;">
+                                                        <div class="btx-box-body">
+
+                                                            <div class="btx-item js-item-heading btx-heading btx-heading--breakline btx-left-align btx-uppercase" style="margin-bottom:40px;">
+                                                                <h2 class="btx-heading-text btx-custom_a-font btx-s-text-color btx-s-text-border"><span class="font-style font-style-big" style="font-size: 60px;">What's going on</span></h2>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-blog btx-blog btx-blog--list btx-left-align btx-with-spacing btx-list--no-media">
+
+                                                                <div class="btx-blog-content" style="position: relative; height: 352px;">
+
+                                                                    <article class="btx-entry btx-entry--columnist  post-141 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-mountain tag-winter" style="margin-bottom: 24px; position: absolute; left: 0px; top: 0px;" data-filter="Travel">
+                                                                        <div class="btx-entry-inner anmt-item anmt-fadeinl" style="background-color:transparent;">
+
+                                                                            <div class="btx-entry-body" style="padding:0.5px;">
+
+                                                                                <h4 class="btx-entry-title btx-s-text-color btx-custom_a-font" style="font-size:22px; text-transform:uppercase;">
+                                                                                    <a href="#">Hey folks, it’s winter</a>
+                                                                                </h4>
+
+                                                                                <div class="btx-entry-meta btx-s-text-color btx-primary-font">
+
+                                                                                    <div class="btx-entry-meta-body">
+
+                                                                                        <div class="btx-entry-date btx-p-text-color">
+                                                                                            7 months ago </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+
+                                                                    <article class="btx-entry btx-entry--columnist  post-139 post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-life tag-style" style="margin-bottom: 24px; position: absolute; left: 0px; top: 88px;" data-filter="Design">
+                                                                        <div class="btx-entry-inner anmt-item anmt-fadeinl" style="background-color:transparent;">
+
+                                                                            <div class="btx-entry-body" style="padding:0.5px;">
+
+                                                                                <h4 class="btx-entry-title btx-s-text-color btx-custom_a-font" style="font-size:22px; text-transform:uppercase;">
+                                                                                    <a href="#">The bluish shade of gray</a>
+                                                                                </h4>
+
+                                                                                <div class="btx-entry-meta btx-s-text-color btx-primary-font">
+
+                                                                                    <div class="btx-entry-meta-body">
+
+                                                                                        <div class="btx-entry-date btx-p-text-color">
+                                                                                            7 months ago </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+
+                                                                    <article class="btx-entry btx-entry--columnist  post-137 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-life" style="margin-bottom: 24px; position: absolute; left: 0px; top: 176px;" data-filter="Lifestyle">
+                                                                        <div class="btx-entry-inner anmt-item anmt-fadeinl" style="background-color:transparent;">
+
+                                                                            <div class="btx-entry-body" style="padding:0.5px;">
+
+                                                                                <h4 class="btx-entry-title btx-s-text-color btx-custom_a-font" style="font-size:22px; text-transform:uppercase;">
+                                                                                    <a href="#">The day we were together</a>
+                                                                                </h4>
+
+                                                                                <div class="btx-entry-meta btx-s-text-color btx-primary-font">
+
+                                                                                    <div class="btx-entry-meta-body">
+
+                                                                                        <div class="btx-entry-date btx-p-text-color">
+                                                                                            7 months ago </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+
+                                                                    <article class="btx-entry btx-entry--columnist  post-135 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-travel tag-ocean tag-sail tag-trip" style="margin-bottom: 24px; position: absolute; left: 0px; top: 264px;" data-filter="Lifestyle, Travel">
+                                                                        <div class="btx-entry-inner anmt-item anmt-fadeinl" style="background-color:transparent;">
+
+                                                                            <div class="btx-entry-body" style="padding:0.5px;">
+
+                                                                                <h4 class="btx-entry-title btx-s-text-color btx-custom_a-font" style="font-size:22px; text-transform:uppercase;">
+                                                                                    <a href="#">To the top of the world</a>
+                                                                                </h4>
+
+                                                                                <div class="btx-entry-meta btx-s-text-color btx-primary-font">
+
+                                                                                    <div class="btx-entry-meta-body">
+
+                                                                                        <div class="btx-entry-date btx-p-text-color">
+                                                                                            7 months ago </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="btx-item js-item-space btx-space" style="height:10px;"></div>
+
+                                                            <div class="btx-item js-item-button btx-button btx-button--border btx-left-align btx-button-size--medium btx-button-hover--inverse btx-button-color--basic">
+                                                                <a href="#" target="_blank" class="btnx" style="border-radius:0px; border-width:1px;">
+
+                                                                                View All            
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="btx-item js-item-box btx-box btx-left-align btx-p-border-border">
+                                                <div class="btx-background" data-type="image" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
+                                                    <div class="btx-background-overlay " style="opacity:0.9;"></div>
+                                                </div>
+                                                <div class="btx-box-inner" style="height:100vh; line-height:100vh;" data-height="100vh">
+                                                    <div class="btx-box-content btx-middle-vertical" style="max-width:550px; overflow:visible;">
+                                                        <div class="btx-box-body">
+
+                                                            <div class="btx-item js-item-heading btx-heading btx-heading--breakline btx-left-align" style="margin-bottom:40px;">
+                                                                <h2 class="btx-heading-text btx-custom_a-font btx-s-text-color btx-s-text-border"><span class="font-style font-style-big" style="font-size: 60px;">Get In Touch</span></h2>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-text btx-text btx-left-align btx-primary-font">
+                                                                <div class="btx-row" style="margin:0 -30px;">
+
+                                                                    <div class="btx-text-content btx-col-12" style="padding:0 30px;">
+                                                                        <div class="btx-text-content-inner">
+                                                                            <span class="font-style" style="font-size: 18px;"><span style="color: rgb(255, 255, 255);">3653 Catherine Street
+                                                                            <br>Lawndale CA 90260
+                                                                            <br><br>
+                                                                            Phone:  1 800 234 5678
+                                                                            <br>Email: info@yourdomain.com</span></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="btx-item js-item-space btx-space" style="height:10px;"></div>
+
+                                                            <div class="btx-item js-item-button btx-button btx-button--border btx-left-align btx-button-size--medium btx-button-hover--inverse btx-button-color--basic">
+                                                                <a href="#" class="btnx" style="border-radius:0px; border-width:1px;">
+
+                                                                                Drop A Line         
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btx-row btx-row--main">
+                                        <div class="btx-col-12">
+
+                                            <div class="btx-item js-item-divider btx-divider btx-divider--single btx-center-align">
+                                                <div class="btx-divider-line btx-p-border-bg btx-p-border-border" style="width:100%; height:1px; background-color:#898989;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btx-row btx-row--main">
+                                        <div class="btx-col-6">
+
+                                            <div class="btx-item js-item-text btx-text btx-left-align btx-primary-font btx-center-align-responsive">
+                                                <div class="btx-row" style="margin:0 -30px;">
+
+                                                    <div class="btx-text-content btx-col-12" style="padding:0 30px;">
+                                                        <div class="btx-text-content-inner">
+                                                            <span style="color: rgb(255, 255, 255);">© 2016 Bateaux Theme.</span> </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btx-col-6">
+
+                                            
+                                            <div class="btx-item js-item-social btx-social btx-social--plain btx-right-align btx-center-align-responsive">
+                                                <div class="btx-social-inner">
+                                                    <a href="http://facebook.com/" class="btx-social-item btx-social-facebook" target="_blank">
+                                                        <span class="btx-icon btx-icon--without-hover btx-icon--plain btx-icon--small">
+                                                            <span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;">
+                                                                <i class="fa fa-facebook"></i>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <a href="http://twitter.com/" class="btx-social-item btx-social-twitter" target="_blank">
+                                                        <span class="btx-icon btx-icon--without-hover btx-icon--plain btx-icon--small">
+                                                            <span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;">
+                                                                <i class="fa fa-twitter"></i>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <a href="http://instagram.com/" class="btx-social-item btx-social-instagram" target="_blank">
+                                                        <span class="btx-icon btx-icon--without-hover btx-icon--plain btx-icon--small">
+                                                            <span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;">
+                                                                <i class="fa fa-instagram"></i>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                    <a href="http://youtube.com/" class="btx-social-item btx-social-youtube" target="_blank">
+                                                        <span class="btx-icon btx-icon--without-hover btx-icon--plain btx-icon--small">
+                                                            <span class="btx-icon-normal btx-icon-plain btx-p-brand-color" style="color:#ffffff;">
+                                                                <i class="fa fa-youtube"></i>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btx-row btx-row--main">
+                                        <div class="btx-col-12">
+
+                                            <div class="btx-item js-item-space btx-space" style="height:20px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </article>
+        </main>
+
+    </div>
+
+
+  
+
+
+{% endblock body %}

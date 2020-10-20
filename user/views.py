@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 #from django.shortcuts import HttpResponseRedirect
-from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketElan,PacketsArticle,PacketsUsers,Elan,ElanImage
+from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketsUsers,Elan,ElanImage
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 
@@ -148,7 +148,7 @@ def sticker(request):
             imgHead = request.FILES.get("image")
             ctgry = request.POST.get("status")
             Sticker.status = ctgry
-
+            Sticker.packet = 'nrml'
             fs = FileSystemStorage()
             file_path=fs.save(imgHead.name,imgHead)
 
@@ -159,10 +159,7 @@ def sticker(request):
             #Sticker.product = Article.objects.get(id=Sticker.id)
     
             Sticker.save()
-            Packet = PacketsArticle()
-            Packet.elan=Sticker
-            Packet.packet='nrml'
-            Packet.save()
+            
             ac  = ArticleCategory()
 
             ac.product = Sticker
@@ -212,6 +209,7 @@ def elan(request):
             imgHead = request.FILES.get("image")
             ctgry = request.POST.get("status")
             Sticker.status = ctgry
+            Sticker.packet = 'nrml'
 
             fs = FileSystemStorage()
             file_path=fs.save(imgHead.name,imgHead)
@@ -224,11 +222,7 @@ def elan(request):
     
             Sticker.save()
 
-            
-            Packet = PacketElan()
-            Packet.elan=Sticker
-            Packet.packet='nrml'    #Burdaki Olanlar Elan ucunde yaratmaq lazimdi
-            Packet.save()
+          
             
             
             ac  = ElanCategory()

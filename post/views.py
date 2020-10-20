@@ -69,9 +69,9 @@ def index(request):
     userNormal = models.PacketsArticle.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
     """
     
-    articles = models.Article.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+    articles = models.Article.objects.filter(packet='nrml')[::-1][:6] # [:10] Butun Articllar Sonuncu 10 dene
 
-    elanlar = models.Elan.objects.filter(packet='nrml')[::-1][:12] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    elanlar = models.Elan.objects.filter(packet='nrml')[::-1][:6] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
     
     Premiumarticles = models.Article.objects.filter(packet='pre')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
 

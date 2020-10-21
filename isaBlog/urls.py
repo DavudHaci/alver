@@ -22,6 +22,7 @@ from post import views
 app_name="isaBlog"
 urlpatterns = [
     path('davudhaji/admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('', views.index,name="index"),
     path('about/', views.about,name="about"),
     path('sticker/<int:id>',views.dynamic,name="dynamic"),

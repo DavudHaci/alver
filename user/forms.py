@@ -3,6 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from post.models import Article,Elan
 from multiupload.fields import MultiFileField
+from django.contrib.auth.models import User
 
 
 
@@ -69,3 +70,11 @@ class ElanForm(forms.ModelForm):
     class Meta:
         model = Elan
         fields = ['user','title','content','nomre','qiymet']
+
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['username','first_name','last_name','email']
+

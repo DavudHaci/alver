@@ -263,11 +263,11 @@
 
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                
-                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                             
+                                <a class="dropdown-item d-flex align-items-center py-2" href="{% url 'user:settings' %}">
                                     <span class="material-icons mr-2">settings</span> Settings
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center py-2" href="/user/logout">
+                                <a class="dropdown-item d-flex align-items-center py-2" href="{% url 'user:logout' %}">
                                     <span class="material-icons mr-2">exit_to_app</span> Logout
                                 </a>
                             </div>

@@ -4,12 +4,33 @@ from django.contrib.auth.models import User
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
 #from django.shortcuts import HttpResponseRedirect
 from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketsUsers,Elan,ElanImage
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
+cavab = None
+def dec(fun):
+    def wrapper(data):
+        son = fun(data)
+        print(data.user.password[:6],"dataaa22222")
+        global cavab
+        if data.user.password[:6] == "pbkdf2":
+            cavab = True
+            return son
+        else:
+            cavab = False
+            return redirect("/user/wc/")
+            
+    return wrapper 
 
 
+
+
+def warningChange(request):
+    messages.warning(request,"Facebook ve Ya Google İle Daxil olmusunuzsa parolu dəyişdirə bilmərsiniz")
+    return redirect("/")
 
 def UserLogout(request):
     logout(request)
@@ -290,3 +311,55 @@ def elanDinamik(request,id):
         }
 
         return render(request,"product.html",content)
+
+
+@login_required(login_url="/user/login")
+def settings(request):
+    try:
+        if request.method == "POST":
+            print(request.POST)
+            user1 = get_object_or_404(User,id=request.user.id)
+            user1.username = request.POST.get("username")#request.POST.get("username")[0],last_name=request.POST.get("last_name")[0],first_name=request.POST.get("first_name")[0],email=request.POST.get("email")[0]
+            user1.last_name = request.POST.get("last_name")
+            user1.first_name = request.POST.get("first_name")
+            user1.email = request.POST.get("email")
+
+            user1.save()
+            
+            messages.success(request,"Melumatlariniz Yenilendi")
+
+            return redirect("/")
+    except:
+
+        messages.warning(request,"Belə bir isdifadəçi adı artıq mövcüddur")
+
+        return redirect("/user/settings/")
+
+
+
+    user = get_object_or_404(User,id=request.user.id)
+    userForm = forms.UserForm(instance=user)
+        
+    return render(request,"settings.html",{"form":userForm})
+@dec
+def change(request):
+
+    return redirect("/user/password/")
+
+
+class PasswordReverse(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = "/user/passSuccess/"
+    
+
+
+
+def success(request):
+
+    messages.success(request,"Parolunuz dəyişdirildi")
+    return redirect("/user/password")
+
+@login_required(login_url="/user/login")
+def buy(request,packet):
+
+    return render(request,"buy.html",{"packet":packet})

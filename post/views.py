@@ -244,40 +244,20 @@ def updateArticle(request,id):
 def Category(request,ctgry,nov):
     print(ctgry,nov)
 
+    articles = models.Article.objects.filter(status=nov,packet='nrml')[::-1] # [:10] Butun Articllar Sonuncu 10 dene
 
-
-
-    articles = models.Article.objects.filter(status=nov)[::-1] # [:10] Butun Articllar Sonuncu 10 dene
-
-    elanlar = models.Elan.objects.filter(status=nov)[::-1]
-
-    allinone = [articles,elanlar]
-    one =[]
-    for i in allinone:
-        for j in i:
-            one+=[j]
-
-    def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
-        return word.created_date # burdada biz created_date e gore sortlasdiracaqimizi bildiririik.
-
-    one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
+    elanlar = models.Elan.objects.filter(status=nov,packet='nrml')[::-1] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
     
-            
+    Premiumarticles = models.Article.objects.filter(status=nov,packet='pre')[::-1] # [:10] Butun Articllar Sonuncu 10 dene
 
-    
-    palasa = len(one)//4 + 1
-    print(palasa)
-    x = 0
-    
-    son=[]
-    for i in range(palasa):
-        son+=[one[x:x+4]]
-        x+=4
+    Premiumelanlar = models.Elan.objects.filter(status=nov,packet='pre')[::-1] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
 
-    
-    print(son)
+    son = kole([articles,elanlar])
+    pre = kole([Premiumarticles,Premiumelanlar])
+
 
 
     return render(request,"katiqoriya.html",{
-    "son":son
+    "son":son,
+    "pre":pre,
     })

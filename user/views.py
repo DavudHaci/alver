@@ -25,7 +25,31 @@ def dec(fun):
             
     return wrapper 
 
+def kole(ls):
+    allinone = ls
+    one =[]
+    for i in allinone:
+        for j in i:
+            one+=[j]
+        
 
+
+    def SortKey(word):  # burdaki word'a sorted funksiyasi "one" listinin icerisindeki elmentleri gezir ve SortKeye gonderir davami--
+        return word.created_date # burdada biz created_date(yeni meselcun one[0].create_date kimi) e gore sortlasdiracaqimizi bildiririik.
+
+    one = sorted(one,key=SortKey)[::-1]  #Sort modulunun key parametri heyat qurtariri ! :D
+            
+
+    
+    palasa = len(one)//4 + 1
+    x = 0
+    
+    son=[]
+    for i in range(palasa):
+        son+=[one[x:x+4]]
+        x+=4
+
+    return son
 
 
 def warningChange(request):
@@ -293,6 +317,16 @@ def elan(request):
 def elanDinamik(request,id):
 
     articlenow = get_object_or_404(Elan,id=id)
+    articles = Article.objects.filter(status=articlenow.status,packet='nrml')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+
+    elanlar = Elan.objects.filter(status=articlenow.status,packet='nrml')[::-1][:4] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    
+    Premiumarticles = Article.objects.filter(status=articlenow.status,packet='pre')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+
+    Premiumelanlar = Elan.objects.filter(status=articlenow.status,packet='pre')[::-1][:4] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+
+    son = kole([articles,elanlar])
+    pre = kole([Premiumarticles,Premiumelanlar])
 
     try:
         articleImages=ElanImage.objects.filter(product = articlenow)
@@ -300,6 +334,8 @@ def elanDinamik(request,id):
         content = {
             'article':articlenow,
             'articleImages':articleImages,
+            'son':son,
+            'pre':pre,
         }
 
         return render(request,"product.html",content)
@@ -308,6 +344,8 @@ def elanDinamik(request,id):
 
         content = {
             "article":articlenow,
+            'son':son,
+            'pre':pre,
         }
 
         return render(request,"product.html",content)

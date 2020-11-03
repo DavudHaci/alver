@@ -100,22 +100,37 @@ def about(request):
 
 def dynamic(request,id):
     articlenow = get_object_or_404(models.Article,id=id)
-    article = get_object_or_404(models.Article,id=id)
+
+    articles = models.Article.objects.filter(status=articlenow.status,packet='nrml')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+
+    elanlar = models.Elan.objects.filter(status=articlenow.status,packet='nrml')[::-1][:4] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    
+    Premiumarticles = models.Article.objects.filter(status=articlenow.status,packet='pre')[::-1][:4] # [:10] Butun Articllar Sonuncu 10 dene
+
+    Premiumelanlar = models.Elan.objects.filter(status=articlenow.status,packet='pre')[::-1][:4] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+
+    son = kole([articles,elanlar])
+    pre = kole([Premiumarticles,Premiumelanlar])
+    print(son,pre,"SOOONNN PRREEE")
+
     try:
         articleImages=models.ArticleImage.objects.filter(product = articlenow)
         print(articleImages,'\n',articleImages[0].product_image.url,"BUUUUU ARTICCCLEEE IMAGEESSSDIR")
         content = {
-            'article':article,
-            'articleImages':articleImages
+            'article':articlenow,
+            'articleImages':articleImages,
+            'son':son,
+            'pre':pre,
         }
 
         return render(request,"product.html",content)
     except:
 
-        print(article.title,article.content,"VARYOXXXXXXX")
 
         content = {
-            "article":articlenow
+            "article":articlenow,
+            'son':son,
+            'pre':pre,
         }
 
         return render(request,"product.html",content)

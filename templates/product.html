@@ -42,7 +42,7 @@
                         <div itemscope itemtype="http://schema.org/Product" id="product-980" class="post-980 product type-product status-publish has-post-thumbnail product_cat-shoes product_tag-formalwear product_tag-shoes first instock sale shipping-taxable purchasable product-type-simple">
                             <div class="btx-single-product-content thumbnail-bottom">
 
-                                <span class="onsale">Sale!</span>
+                                {% if article.packet == 'pre' %}<span class="onsale">PREMIUM</span>{% endif %}
                                 <div class="images btx-product-gallery btx-product-gallery--bottom btx-gallery--carousel" data-popup="">
                                     <div class="btx-gallery-content">
                                         <div class="btx-gallery-item">
@@ -237,77 +237,94 @@
 
                             <div class="related products btx-product btx-product--standard btx-product-layout--grid">
                                 <div class="btx-heading btx-heading--default btx-heading--underline btx-p-border-border btx-s-text-border">
-                                    <h3 class="btx-heading-text  btx-s-text-color">Related Products</h3></div>
+                                    <h3 class="btx-heading-text  btx-s-text-color">Oxşar Premium elanlar</h3></div>
                                 <div class="btx-product-content btx-left-align" data-display="4" data-indicator="false">
+                                    {% for elanss in pre %}
+                                        {% for elan in elanss %}
+                                            <article class="btx-entry btx-col-3 btx-entry-light-scheme post-984 product type-product status-publish has-post-thumbnail product_cat-neckwear product_tag-formalwear product_tag-tie  instock shipping-taxable purchasable product-type-simple">
+                                                <div class="btx-entry-inner btx-product-entry-content ">
+                                                    <div class="btx-product-entry-media">
 
-                                    <article class="btx-entry btx-col-3 btx-entry-light-scheme post-984 product type-product status-publish has-post-thumbnail product_cat-neckwear product_tag-formalwear product_tag-tie  instock shipping-taxable purchasable product-type-simple">
-                                        <div class="btx-entry-inner btx-product-entry-content ">
-                                            <div class="btx-product-entry-media">
+                                                        <a class="btx-product-entry-image" {% if elan.user %}href="/user/elan/{{elan.id}}"{% else %}href="/sticker/{{elan.id}}"{% endif %}>
 
-                                                <a class="btx-product-entry-image" href="#">
-
-                                                    <img width="624" height="800" src="upload/shop-bowtie-01-624x800.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="shop-bowtie-01" title="shop-bowtie-01" />
-                                                    <div class="btx-product-hover-image btx-p-bg-bg">
-                                                        <img src="upload/shop-bowtie-02-731x1024.jpg" alt="" width="731" height="1024"  /> </div>
-                                                </a>
-
-                                            </div>
-
-                                            <div class="btx-product-entry-info">
-                                                <div class="btx-product-entry-info-wrapper">
-                                                    <div class="btx-product-entry-info-inner">
-
-                                                        <h4 class="btx-product-entry-title btx-secondary-font">
-                                                            <a class="btx-s-text-color" href="#">Silk Bow Tie</a>
-                                                        </h4>
-
-                                                        <div class="btx-product-entry-meta">
-
-                                                            <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>89.00</span>
-                                                            </span>
-
-                                                        </div>
+                                                            <img width="624" height="800" src="{{ elan.image.url }}" style="max-width:300; min-width:300px; max-height:150px; min-height:150px;" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="{{elan.title|truncatechars:25}}" title="shop-bowtie-01" />
+                                                            <div class="btx-product-hover-image btx-p-bg-bg">
+                                                                <img src="{{ elan.image.url }}" style="max-width:300; min-width:300px; max-height:150px; min-height:150px;" alt="" width="731" height="1024"  /> </div>
+                                                        </a>
 
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
 
-                                    <article class="btx-entry last btx-col-3 btx-entry-light-scheme post-988 product type-product status-publish has-post-thumbnail product_cat-accessories product_tag-cufflinks product_tag-formalwear first instock shipping-taxable purchasable product-type-simple">
-                                        <div class="btx-entry-inner btx-product-entry-content ">
-                                            <div class="btx-product-entry-media">
+                                                    <div class="btx-product-entry-info">
+                                                        <div class="btx-product-entry-info-wrapper">
+                                                            <div class="btx-product-entry-info-inner">
 
-                                                <a class="btx-product-entry-image" href="#">
+                                                                <h4 class="btx-product-entry-title btx-secondary-font">
+                                                                    <a class="btx-s-text-color" {% if elan.user %}href="/user/elan/{{elan.id}}"{% else %}href="/sticker/{{elan.id}}"{% endif %}>{{elan.title|truncatechars:28}}</a>
+                                                                </h4>
 
-                                                    <img width="624" height="800" src="upload/shop-cufflinks-01-624x800.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="shop-cufflinks-01" title="shop-cufflinks-01" />
-                                                    <div class="btx-product-hover-image btx-p-bg-bg">
-                                                        <img src="upload/shop-cufflinks-02-731x1024.jpg" alt="" width="731" height="1024"  /> </div>
-                                                </a>
+                                                                <div class="btx-product-entry-meta">
 
-                                            </div>
+                                                                    <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#8916;</span><strong>{{elan.qiymet}}</strong></span>
+                                                                    </span>
 
-                                            <div class="btx-product-entry-info">
-                                                <div class="btx-product-entry-info-wrapper">
-                                                    <div class="btx-product-entry-info-inner">
+                                                                </div>
 
-                                                        <h4 class="btx-product-entry-title btx-secondary-font">
-                                                            <a class="btx-s-text-color" href="#">Cufflinks</a>
-                                                        </h4>
-
-                                                        <div class="btx-product-entry-meta">
-
-                                                            <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>249.00</span>
-                                                            </span>
-
+                                                            </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </article>
+                                            </article>   
 
+                                        {% endfor %}
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="related products btx-product btx-product--standard btx-product-layout--grid">
+                              <div class="btx-heading btx-heading--default btx-heading--underline btx-p-border-border btx-s-text-border">
+                                    <h3 class="btx-heading-text  btx-s-text-color">Oxşar elanlar</h3></div>
+                                <div class="btx-product-content btx-left-align" data-display="4" data-indicator="false">
+                                    
+                                    {% for elans in son %}
+                                        
+                                        {% for elan in elans %}
+                                            <article class="btx-entry btx-col-3 btx-entry-light-scheme post-984 product type-product status-publish has-post-thumbnail product_cat-neckwear product_tag-formalwear product_tag-tie  instock shipping-taxable purchasable product-type-simple">
+                                                <div class="btx-entry-inner btx-product-entry-content ">
+                                                    <div class="btx-product-entry-media">
+
+                                                        <a class="btx-product-entry-image" {% if elan.user %}href="/user/elan/{{elan.id}}"{% else %}href="/sticker/{{elan.id}}"{% endif %}>
+
+                                                            <img width="624" height="800" src="{{ elan.image.url }}" style="max-width:300; min-width:300px; max-height:150px; min-height:150px;" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="{{elan.title|truncatechars:25}}" title="shop-bowtie-01" />
+                                                            <div class="btx-product-hover-image btx-p-bg-bg">
+                                                                <img src="{{ elan.image.url }}" style="max-width:300; min-width:300px; max-height:150px; min-height:150px;" alt="" width="731" height="1024"  /> </div>
+                                                        </a>
+
+                                                    </div>
+
+                                                    <div class="btx-product-entry-info">
+                                                        <div class="btx-product-entry-info-wrapper">
+                                                            <div class="btx-product-entry-info-inner">
+
+                                                                <h4 class="btx-product-entry-title btx-secondary-font">
+                                                                    <a class="btx-s-text-color" {% if elan.user %}href="/user/elan/{{elan.id}}"{% else %}href="/sticker/{{elan.id}}"{% endif %}>{{elan.title|truncatechars:28}}</a>
+                                                                </h4>
+
+                                                                <div class="btx-product-entry-meta">
+
+                                                                    <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&#36;</span>{{elan.qiymet}}</span>
+                                                                    </span>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>                             
+                                            {% endfor %}
+                                        
+                                            
+                                    {% endfor %}    
                                 </div>
                             </div>
 

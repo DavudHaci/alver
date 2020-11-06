@@ -25,7 +25,7 @@ SECRET_KEY = '!px103825a4nb@zeo1+4m(h+zxix65dh6m8r$1@%xf8@vn&@b&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','alveraz.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -162,6 +162,9 @@ CKEDITOR_CONFIGS = {
     },
     
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 LOGIN_REDIRECT_URL = "/"

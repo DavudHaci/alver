@@ -1,1 +1,1 @@
-wep: gunicorn isaBlog.wsgi --log-file -
+wep: gunicorn isaBlog.wsgi 

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +25,7 @@ SECRET_KEY = '!px103825a4nb@zeo1+4m(h+zxix65dh6m8r$1@%xf8@vn&@b&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','hacidavud.pythonanywhere.com','www.alveraz.tk','alveraz.tk']
 
 
 # Application definition
@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook', #https://hacidavud.pythonanywhere.com/accounts/facebook/login/callback/ callbacl olmalidi
-    
+
 ]
 
 SITE_ID = 1
-#'whitenoise.middleware.WhiteNoiseMiddleware',
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,10 +84,10 @@ TEMPLATES = [
 
 
 AUTHENTICATION_BACKENDS = [
-    
+
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 ]
 
 
@@ -96,10 +96,6 @@ WSGI_APPLICATION = 'isaBlog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
-
-
 
 DATABASES = {
     'default': {
@@ -149,7 +145,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-   
+
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
@@ -163,13 +159,7 @@ CKEDITOR_CONFIGS = {
         "allowedContent":True,
         "width":"100%",
     },
-    
+
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-
-
 LOGIN_REDIRECT_URL = "/"
-django_heroku.settings(locals())

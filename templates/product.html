@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- LINK TAGS -->
 
-    <title>AlVer.az - Azerbaycanin Online Elan Sayti</title>
+    <title>{{article.title}}-AlverAz</title>
 	<link rel="icon" type="image/x-icon" href="{% static 'upload/alverust.png'%}" />
 
     <link rel='stylesheet' href="{% static 'css/layerslider.css'%}" type='text/css' media='all' />
@@ -30,11 +30,11 @@
 <body class="single single-product postid-980 woocommerce woocommerce-page btx-layout btx-layout--wide btx-layout-responsive btx-layout--topnav btx-layout--fixednav" data-scheme="light" data-layout="wide">
 
     {% include 'includes/nvbr.html' %}
-
+        <br>
         <div class="btx-content btx-content--no-header">
             <div class="btx-content-wrapper">
                 <nav class="woocommerce-breadcrumb">
-                    <div class="btx-container"><a href="index.html">Home</a><span class="fa fa-angle-right"></span><a href="#">Shoes</a><span class="fa fa-angle-right"></span>{{article.title}}</div>
+                    <div class="btx-container"><a href="index.html">Ev</a><span class="fa fa-angle-right"></span><a href="#">{{article.get_status_display}}</a><span class="fa fa-angle-right"></span>{{article.title}}</div>
                 </nav>
                 <div class="btx-container">
                     <main id="main" class="btx-single-product btx-main btx-main--single">

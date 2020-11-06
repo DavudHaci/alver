@@ -275,4 +275,7 @@ def Category(request,ctgry,nov):
     return render(request,"katiqoriya.html",{
     "son":son,
     "pre":pre,
+    "nov":ctgry,
     })
+
+    

@@ -244,7 +244,6 @@ def sticker(request):
         
     return render(request,"sticker.html",content)
 
-
 def elan(request):
     if request.method == "POST":
         form = forms.ElanForm(request.POST,request.FILES)
@@ -261,7 +260,7 @@ def elan(request):
 
             Sticker.image = file_path 
 
-
+            print(imgHead,"IMGGG HEEAADDD")
 
             #Sticker.product = Article.objects.get(id=Sticker.id)
     

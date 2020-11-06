@@ -28,7 +28,7 @@
             {% include 'includes/categorys.html' %}<br><br><br>
 
 
-            <p><label for="image">Sekiller</label> <input type="file" name="image" required></p>
+            <p><label for="image">Sekiller</label> <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg" required></p>
         </div>
         
 
@@ -67,6 +67,7 @@
                 var newInput=document.createElement("input");
                 newInput.type="file";
                 newInput.name="file[]";
+                newInput.accept="image/x-png,image/gif,image/jpeg";
             
 
 

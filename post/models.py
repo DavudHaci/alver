@@ -96,7 +96,7 @@ class Article(models.Model):
     image = models.ImageField(blank=True,verbose_name="Sekil Elave Et")
     qiymet = models.IntegerField(verbose_name="Qiymet")
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
-
+    
 
     
     def __str__(self):

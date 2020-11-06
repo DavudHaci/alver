@@ -163,5 +163,10 @@ CKEDITOR_CONFIGS = {
     
 }
 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+
 LOGIN_REDIRECT_URL = "/"
 django_heroku.settings(locals())

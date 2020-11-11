@@ -9,32 +9,72 @@
     <!-- LINK TAGS -->
     <title>AlVerAz - Online Satis Magazasi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
-    <link rel='stylesheet' href='{% static 'css/layerslider.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'revslider/public/assets/css/settings.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'css/woocommerce-layout.css' %}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'css/woocommerce-smallscreen.css'%}' type='text/css' media='only screen and (max-width: 768px)' />
-    <link rel='stylesheet' href='{% static 'css/woocommerce.css' type='text/css'%}' media='all' />
-    <link rel='stylesheet' href='{% static 'js/mediaelement/mediaelementplayer.min.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'js/mediaelement/wp-mediaelement.min.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'css/main.min.css' type='text/css'%}' media='all' />
-    <link rel='stylesheet' href='{% static 'css/style-customabae.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'css/configs.css'%}' type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'css/layerslider.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'revslider/public/assets/css/settings.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'css/woocommerce-layout.css' %}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'css/woocommerce-smallscreen.css'%}" type='text/css' media='only screen and (max-width: 768px)' />
+    <link rel='stylesheet' href="{% static 'css/woocommerce.css' type='text/css'%}" media='all' />
+    <link rel='stylesheet' href="{% static 'js/mediaelement/mediaelementplayer.min.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'js/mediaelement/wp-mediaelement.min.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'css/main.min.css' type='text/css'%}" media='all' />
+    <link rel='stylesheet' href="{% static 'css/style-customabae.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'css/configs.css'%}" type='text/css' media='all' />
 
-    <link rel='stylesheet' href='{% static 'js/wp-google-maps-pro/css/wpgmza_style_pro.css'%}' type='text/css' media='all' />
-    <link rel='stylesheet' href='{% static 'js/wp-google-maps-pro/css/data_table_front.css'%}' type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'js/wp-google-maps-pro/css/wpgmza_style_pro.css'%}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{% static 'js/wp-google-maps-pro/css/data_table_front.css'%}" type='text/css' media='all' />
 
 	<link rel="icon" type="image/x-icon" href="{% static 'upload/alverust.png'%}" />
     
 </head>
-<body class="home page page-id-12 page-parent page-template-default btx-layout btx-layout--wide btx-layout-responsive btx-layout--topnav btx-layout--fixednav" data-scheme="light" data-layout="wide">
-    
+<body class="home page page-id-12 page-parent page-template-default btx-layout btx-layout--wide btx-layout-responsive btx-layout--topnav btx-layout--fixednav" data-scheme="light" data-layout="wide"> 
+    <style>
+    .loader {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader > img {
+        width: 500px;
+    }
+
+    .loader.hidden {
+        animation: fadeOut 1s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeOut {
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+
+    </style>
+    <div class="loader">
+        <img src="{% static 'images/loader2.gif' %}" />
+    </div>
     {% include 'includes/nvbr.html' %}
+    
     {% block body %}
 
-    {% endblock body %}
-    {% include 'includes/footer.html' %}
 
-    
-   </body>
+    {% endblock body %}
+    {% include 'includes/footer.html' %}   
+    <script>
+    window.addEventListener("load", function () {
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden"; // class "loader hidden"
+    });
+    </script>
+</body>
    
 </html>

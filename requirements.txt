@@ -32,3 +32,5 @@ sqlparse==0.4.1
 urllib3==1.25.11
 White-Noise==0.1.0
 whitenoise==5.2.0
+
+

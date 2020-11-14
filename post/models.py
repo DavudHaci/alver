@@ -1,6 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-
+from PIL import Image
+import PIL 
+import os
+import glob
 
 
 # Create your models here.
@@ -77,7 +80,10 @@ class Elan(models.Model):
     qiymet = models.IntegerField(verbose_name="Qiymət")
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     
-
+    def save(self,*args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+        img.save(self.image.path,optimize=True,quality=30)
     
     def __str__(self):
         return self.title
@@ -97,7 +103,10 @@ class Article(models.Model):
     qiymet = models.IntegerField(verbose_name="Qiymet")
     packet = models.CharField(choices=ARTICLE_PACKETS,verbose_name="Paketler",default="Normal",max_length=50)
     
-
+    def save(self,*args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+        img.save(self.image.path,optimize=True,quality=30)
     
     def __str__(self):
         return self.title

@@ -8,8 +8,16 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.forms import PasswordChangeForm
 #from django.shortcuts import HttpResponseRedirect
 from post.models import Article,ElanCategory,ArticleImage,ArticleCategory,PacketsUsers,Elan,ElanImage
+
 from django.core.files.storage import FileSystemStorage
+
 from django.contrib.auth.decorators import login_required
+from PIL import Image
+import PIL 
+import os
+import glob
+
+
 cavab = None
 def dec(fun):
     def wrapper(data):
@@ -194,6 +202,7 @@ def sticker(request):
             ctgry = request.POST.get("status")
             Sticker.status = ctgry
             Sticker.packet = 'nrml'
+
             fs = FileSystemStorage()
             file_path=fs.save(imgHead.name,imgHead)
 

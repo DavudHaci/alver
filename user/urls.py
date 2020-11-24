@@ -24,6 +24,8 @@ urlpatterns = [       #Funkisya Adi Backend
     path('buy/<str:packet>', views.buy,name="buy"),
     path('passSuccess/', views.success,name="passSuccess"),    
     path('elan/<int:id>', views.elanDinamik,name="elanDinamik"),
+    path('elan/<int:id>/buy/', views.buyElan,name="buyElan"),
+
 
 
 

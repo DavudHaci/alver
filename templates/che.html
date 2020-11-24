@@ -1,11 +1,12 @@
 
 
 
+{% if preyox or sonyox %}
     <div class="btx-wrapper btx-p-bg-bg btx-home hide-border">
 
         
 
-
+    {% if preyox %}
         <main class="btx-content btx-content--with-header" id="main">
             <article id="post-1291" class="btx-content-wrapper post-1291 page type-page status-publish hentry">
             <header class="btx-content-header btx-page-title btx-page-title--inline btx-left-align js-dynamic-navbar btx-page-title--left" data-role="header">
@@ -46,7 +47,7 @@
 
             </header>
             
-              
+            
             {% for article in pre %}
                 <div class="btx-main btx-main--single">
                     <div class="btx-main-wrapper">
@@ -110,6 +111,10 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+            
+            {% endif %}
+            {% if sonyox %}
       <header class="btx-content-header btx-page-title btx-page-title--inline btx-left-align js-dynamic-navbar btx-page-title--left" data-role="header">
                     <div class="btx-background" data-type="color" data-parallaxspeed="0" data-contentfade="" data-mobileparallax="">
                         <div class="btx-background-overlay btx-s-bg-bg" style="opacity:1;"></div>
@@ -133,6 +138,8 @@
             </header>
             
               
+
+            
             {% for article in son %}
                 <div class="btx-main btx-main--single">
                     <div class="btx-main-wrapper">
@@ -198,6 +205,22 @@
                 {% endfor %}          
             
         </main>
+        {% else %}
+
+        {% endif %}  
+        {% else %}
+        <br><br><br><br><br><br><br>
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Oops Bağışlayın !!</h4>
+            <p>Axtarış etdiyiniz bölmədə və yaxud catiqoriyada elan yoxdur.</p>
+            <hr>
+            <p class="mb-0"></p>
+            </div>
+        </div>
+        
+{% endif %}
+
 
        
     </div>

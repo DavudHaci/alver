@@ -4,6 +4,9 @@ from user import forms
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+import json
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -32,7 +35,31 @@ def kole(ls):
         x+=4
 
     return son
+
+@login_required(login_url="/user/login/")
+def complete(request):
+    productId = json.loads(request.body)["prodcutId"]
+    types = json.loads(request.body)["type"]
+
+    if types == "elan":
+        MyModel = models.Elan.objects.get(id=productId)
+        print(MyModel,"MYMODELLL")
+
+        MyModel.packet = "pre"
+        MyModel.save()
+    elif types == "sticker":
+        
+        MyModel = models.Article.objects.get(id=productId)
+        print(MyModel,"MYMODELLL")
+        MyModel.packet = "pre"
+        MyModel.save()
     
+
+    
+    
+    return JsonResponse("Əməliyatinız Uğurla Başa çatdı",safe=False)
+
+
 
 
 def index(request):
@@ -50,13 +77,16 @@ def index(request):
         son = kole([articles,elanlar])
         pre = kole([Premiumarticles,Premiumelanlar])
 
-        
+        print(pre)
 
 
         return render(request,"searchIndex.html",{
         "son":son,
+        "sonyox":son[0],
         "pre":pre,
+        "preyox":pre[0],
         })
+
 
 
     """
@@ -69,23 +99,25 @@ def index(request):
     userNormal = models.PacketsArticle.objects.filter(packet='nrml')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
     """
     
-    articles = models.Article.objects.filter(packet='nrml')[::-1][:6] # [:10] Butun Articllar Sonuncu 10 dene
+    articles = models.Article.objects.filter(packet='nrml')[::-1][:10] # [:10] Butun Articllar Sonuncu 10 dene
 
-    elanlar = models.Elan.objects.filter(packet='nrml')[::-1][:6] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    elanlar = models.Elan.objects.filter(packet='nrml')[::-1][:14] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
     
-    Premiumarticles = models.Article.objects.filter(packet='pre')[::-1][:12] # [:10] Butun Articllar Sonuncu 10 dene
+    Premiumarticles = models.Article.objects.filter(packet='pre')[::-1][:15] # [:10] Butun Articllar Sonuncu 10 dene
 
-    Premiumelanlar = models.Elan.objects.filter(packet='pre')[::-1][:12] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
+    Premiumelanlar = models.Elan.objects.filter(packet='pre')[::-1][:15] #bunun evezine modelde Meta classi acip altina : ordering = ['-created_date'] yazsaq yenede eyni sey olacaq
 
     son = kole([articles,elanlar])
     pre = kole([Premiumarticles,Premiumelanlar])
 
     
-
+    print(pre)
 
     return render(request,"index.html",{
     "son":son,
+    "sonyox":son[0],
     "pre":pre,
+    "preyox":pre[0],
     })
 
 
@@ -276,6 +308,11 @@ def Category(request,ctgry,nov):
     "son":son,
     "pre":pre,
     "nov":ctgry,
+    "sonyox":son[0],
+    "preyox":pre[0],
     })
 
-    
+@login_required(login_url="/user/login/")
+def buySticker(request,id):
+
+    return render(request,"buy.html",{"id":id,"type":"sticker"})

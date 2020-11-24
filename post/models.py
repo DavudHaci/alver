@@ -10,6 +10,7 @@ import glob
 
 STATUS_CHOICES = [
     ('mnz', 'Mənzillər'),
+    ('tv', 'TV'),
     ('ovo', 'Obyektlər və ofislər'),
     ('trp', 'Torpaq'),
     ('qrj', 'Qarajlar'),

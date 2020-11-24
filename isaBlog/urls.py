@@ -26,9 +26,11 @@ urlpatterns = [
     path('', views.index,name="index"),
     path('about/', views.about,name="about"),
     path('sticker/<int:id>',views.dynamic,name="dynamic"),
+    path('sticker/<int:id>/buy/',views.buySticker,name="buySticker"),
     path('article/', include("post.urls")),
     path('user/', include("user.urls")),
-
+    path('complete/', views.complete, name="complete"),
+    
 
   
 

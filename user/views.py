@@ -17,6 +17,8 @@ import PIL
 import os
 import glob
 
+valid = [".jpg",".jpeg",".png"]
+
 
 cavab = None
 def dec(fun):
@@ -199,6 +201,10 @@ def sticker(request):
             Sticker = form.save(commit=False)
             Sticker.author = request.user
             imgHead = request.FILES.get("image")
+            if not (imgHead.name[-4:] in valid or imgHead.name[-5:] in valid ):
+
+                messages.warning(request,"Şəkili Düzgün Daxil Edin !")
+                return redirect("/")
             ctgry = request.POST.get("status")
             Sticker.status = ctgry
             Sticker.packet = 'nrml'
@@ -224,6 +230,10 @@ def sticker(request):
             try:
                 files = request.FILES.getlist("file[]")
                 for img in files:
+                    if not (img.name[-4:] in valid or img.name[-5:] in valid ):
+                        messages.warning(request,"Şəkili Düzgün Daxil Edin !")
+                        return redirect("/")
+
                     print (img)
                     newfs=FileSystemStorage()
                     newPath= newfs.save(img.name,img)
@@ -264,6 +274,12 @@ def elan(request):
             Sticker.status = ctgry
             Sticker.packet = 'nrml'
 
+            if not (imgHead.name[-4:] in valid or imgHead.name[-5:] in valid ):
+
+                messages.warning(request,"Şəkili Düzgün Daxil Edin !")
+                return redirect("/")
+            
+
             fs = FileSystemStorage()
             file_path=fs.save(imgHead.name,imgHead)
 
@@ -290,6 +306,10 @@ def elan(request):
                 files = request.FILES.getlist("file[]")
                 for img in files:
                     print (img)
+                    if not (img.name[-4:] in valid or img.name[-5:] in valid ):
+                        messages.warning(request,"Şəkili Düzgün Daxil Edin !")
+                        return redirect("/")
+
                     newfs=FileSystemStorage()
                     newPath= newfs.save(img.name,img)
 
@@ -409,3 +429,8 @@ def success(request):
 def buy(request,packet):
 
     return render(request,"buy.html",{"packet":packet})
+
+@login_required(login_url="/user/login/")
+def buyElan(request,id):
+
+    return render(request,"buy.html",{"id":id,"type":"elan"})
